@@ -487,7 +487,12 @@ h1, h2, h3, h4, h5,
 
 
 
+@media and (min-width: 992px) {
 
+  .row.align-items-stretch {
+    margin-left: 100px;
+}
+}
 
   @media (min-width: 768px) {
     .site-section {
