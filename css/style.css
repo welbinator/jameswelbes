@@ -290,6 +290,9 @@ div.fade {
 .dots span {
   opacity: 0;
 }
+#callMe.dots span {
+  opacity: 1;
+}
 #justSpan {
   transition: 2s opacity;
 }

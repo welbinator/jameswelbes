@@ -11,7 +11,7 @@
           
       <div id="animation"> <div id="quotes" class="fade">
          <div>
-        <h1>"Adding quotes to website landing pages is stoopid."</h1><br>
+        <h1>"Adding quotes to website landing pages is stupid."</h1><br>
         <h3>-James Welbes</h3>
          </div>
         </div>
@@ -23,35 +23,24 @@
          </div>
         </div>
       
-      <div id="name" class="fade dots">
+      <div id="name" class="fade">
          <div>
-           <h1>My name is<span id="nameSpan">.</span><span id="nameSpan2">.</span><span id="nameSpan3">.</span></h1><br>
+           <h1>My name is James Welbes<span id="nameSpan">.</span><span id="nameSpan2">.</span><span id="nameSpan3">.</span></h1><br>
         
          </div>
         </div>
       
       
-      
-      <div id="jameswelbes" class="fade">
-         <div>
-        <h1>James Welbes</h1><br>
-        
-         </div>
-        </div>
+     
         
          <div id="callMe" class="fade dots">
          <div>
-        <h1>But you can call me<span id="callMeSpan">.</span><span id="callMeSpan2">.</span><span id="callMeSpan3">.</span></h1><br>
+        <h1>But you can call me <span style="color:#4285f4;">G</span><span style="color:#ea4335;">o</span><span style="color:#fbbc05;">o</span><span style="color:#4285f4;">g</span><span style="color:#34a853;">l</span><span style="color:#ea4335;">e</span> Hat Guy.</h1><br>
         
          </div>
         </div>
       
-      <div id="guy" class="fade">
-         <div>
-           <h1><span style="color:#4285f4;">G</span><span style="color:#ea4335;">o</span><span style="color:#fbbc05;">o</span><span style="color:#4285f4;">g</span><span style="color:#34a853;">l</span><span style="color:#ea4335;">e</span> Hat Guy.</h1><br>
-        
-         </div>
-        </div>
+     
         </div>
        
       <script> doAllTheThings();</script> 
