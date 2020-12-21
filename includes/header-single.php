@@ -30,20 +30,21 @@
     $post_image = $row['post_image'];
 
     $post_id = $row['post_id'];
-    $post_exerpt = substr($row['post_content'], 0, 200);
+    // $post_exerpt = substr($row['post_content'], 0, 200);
+    $post_desc = $row['post_desc'];
 
 
 
   ?>
 
 
-    <!-- <meta name="description" content="<?php echo $post_exerpt; ?>" /> -->
+    <meta name="description" content="<?php echo $post_desc; ?>" />
     <link rel="canonical" href="https://jameswelbes.com/single.php?p_id=<?php echo $post_id; ?>" />
     <link rel="publisher" href="https://jameswelbes.com" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="article" />
     <meta property="og:title" content="<?php echo $post_title; ?>" />
-    <!-- <meta property="og:description" content="<?php echo $post_exerpt; ?>" /> -->
+    <!-- <meta property="og:description" content="<?php echo $post_desc; ?>" /> -->
     <meta property="og:url" content="https://jameswelbes.com/single.php?p_id=<?php echo $post_id; ?>" />
     <meta property="og:site_name" content="James Welbes" />
     <meta property="article:publisher" content="https://jameswelbes.com" />
@@ -59,7 +60,7 @@
     <meta property="og:image:height" content="auto" />
     <meta property="og:image:alt" content=' <?php echo $post_title; ?>' />
     <meta name="twitter:card" content="summary_large_image" />
-    <!-- <meta name="twitter:description" content="<?php echo $post_exerpt; ?>" /> -->
+    <!-- <meta name="twitter:description" content="<?php echo $post_desc; ?>" /> -->
     <meta name="twitter:title" content="<?php echo $post_title; ?>" />
 
     <meta name="twitter:image" content="https://jameswelbes.com/images/posts/<?php echo $post_image; ?>" />
