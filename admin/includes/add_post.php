@@ -21,13 +21,14 @@ if (isset($_POST['create_post'])) {
   $post_content = escape($_POST['post_content']);
   $post_date = date('d-m-y');
   //   $post_comment_count = 4;
+  $post_desc = $_POST['desc'];
 
 
   move_uploaded_file($post_image_temp, "../images/posts/$post_image");
 
-  $query = "INSERT INTO posts(post_category_id, post_title, post_date, post_image, post_content, post_status) ";
+  $query = "INSERT INTO posts(post_category_id, post_title, post_date, post_image, post_content, post_status, post_desc) ";
 
-  $query .= "VALUES({$post_category_id},'{$post_title}',now(),'{$post_image}','{$post_content}','{$post_status}' ) ";
+  $query .= "VALUES({$post_category_id},'{$post_title}',now(),'{$post_image}','{$post_content}','{$post_status}', '{$post_desc}' ) ";
 
   $create_post_query = mysqli_query($connection, $query);
 
@@ -102,6 +103,10 @@ if (isset($_POST['create_post'])) {
   <div class="form-group">
     <label for="post_content">Post Content</label>
     <textarea class="form-control textarea-editor" name="post_content" id="wysiwyg" cols="30" rows="10"></textarea>
+  </div>
+
+  <div class="form-group"><label for="title">Post Description</label>
+    <input type="text" class="form-control" name="desc">
   </div>
 
   <div class="form-group">
