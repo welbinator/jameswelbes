@@ -29,7 +29,7 @@
   <link rel="stylesheet" href="css/style.css">
   <script src="js/opening-animation.js"></script>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <script type='text/javascript' src="https://platform-api.sharethis.com/js/sharethis.js#property=5d3e2015c44880001354fca4&product='inline-share-buttons'" async='async'></script>
+  <!-- <script type='text/javascript' src="https://platform-api.sharethis.com/js/sharethis.js#property=5d3e2015c44880001354fca4&product='inline-share-buttons'" async='async'></script> -->
 
 
 
