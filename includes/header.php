@@ -17,11 +17,11 @@
   <link rel="stylesheet" href="css/owl.carousel.min.css">
   <link rel="stylesheet" href="css/owl.theme.default.min.css">
 
-  <link rel="stylesheet" href="/css/bootstrap-datepicker.min.css">
+  <link rel="stylesheet" href="css/bootstrap-datepicker.css"> <!-- remove? -->
 
   <link rel="stylesheet" href="fonts/flaticon/font/flaticon.min.css">
 
-  <link rel="stylesheet" href="/css/aos.min.css">
+  <link rel="stylesheet" href="css/aos.css"> <!-- remove? -->
   <link rel="stylesheet" href="css/fancybox.min.css">
   <link rel="stylesheet" href="css/animista.css">
 
