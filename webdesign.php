@@ -28,6 +28,7 @@
     ?>
 
       <h2><?php echo $rows; ?></h2>
+      <h2><?php printf($rows); ?></h2>
       <div class="col-6 col-md-6 col-lg-<?php randCol(3); ?>" data-aos="fade-up">
         <a data-fancybox="gallery" href="images/<?php echo $portfolio_image; ?>" class="d-block photo-item">
           <img loading="lazy" src="images/thumbnails/<?php echo $portfolio_image ?>" alt="Image" class="img-fluid">
