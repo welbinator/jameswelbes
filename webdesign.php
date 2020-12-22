@@ -10,6 +10,7 @@
     $query = "SELECT * FROM portfolio";
     $select_all_portfolios_query = mysqli_query($connection, $query);
     $portfolio_count = mysqli_num_rows($select_all_portfolios_query);
+    $count = 1;
     while ($row = mysqli_fetch_assoc($select_all_portfolios_query)) {
 
       $portfolio_title = $row['portfolio_title'];
@@ -19,32 +20,30 @@
 
 
 
-      // $array = array();
 
-      for ($x = 1; $x < $portfolio_count; $x++) {
-        // array_push($array, $x);
 
 
     ?>
 
 
-        <div class="col-6 col-md-6 col-lg-<?php randCol($x); ?>" data-aos="fade-up">
-          <a data-fancybox="gallery" href="images/<?php echo $portfolio_image; ?>" class="d-block photo-item">
-            <img loading="lazy" src="images/thumbnails/<?php echo $portfolio_image ?>" alt="Image" class="img-fluid">
+      <div class="col-6 col-md-6 col-lg-<?php randCol($count); ?>" data-aos="fade-up">
+        <a data-fancybox="gallery" href="images/<?php echo $portfolio_image; ?>" class="d-block photo-item">
+          <img loading="lazy" src="images/thumbnails/<?php echo $portfolio_image ?>" alt="Image" class="img-fluid">
+          <div class="photo-text-more">
             <div class="photo-text-more">
-              <div class="photo-text-more">
-                <h3 class="heading"><?php echo $portfolio_title ?></h3>
-                <span class="meta"><?php echo $portfolio_tagline ?></span>
+              <h3 class="heading"><?php echo $portfolio_title ?></h3>
+              <span class="meta"><?php echo $portfolio_tagline ?></span>
 
-              </div>
             </div>
-          </a>
-        </div>
+          </div>
+        </a>
+      </div>
 
 
 
-    <?php }
+    <?php $count++;
     }
+
     ?>
 
 
