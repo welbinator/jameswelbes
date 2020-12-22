@@ -24,7 +24,7 @@
       for ($x = 1; $x < $rows; $x++) {
         // array_push($array, $x);
 
-
+        echo $rows;
     ?>
 
 
