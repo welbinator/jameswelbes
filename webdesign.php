@@ -21,30 +21,31 @@
 
       // $array = array();
 
-      for ($x = 1; $x < $rows; $x++) {
-        // array_push($array, $x);
+      // for ($x = 1; $x < $rows; $x++) {
+      // array_push($array, $x);
 
-        echo $rows;
+      echo $rows;
     ?>
 
 
-        <div class="col-6 col-md-6 col-lg-<?php randCol(3); ?>" data-aos="fade-up">
-          <a data-fancybox="gallery" href="images/<?php echo $portfolio_image; ?>" class="d-block photo-item">
-            <img loading="lazy" src="images/thumbnails/<?php echo $portfolio_image ?>" alt="Image" class="img-fluid">
+      <div class="col-6 col-md-6 col-lg-<?php randCol(3); ?>" data-aos="fade-up">
+        <a data-fancybox="gallery" href="images/<?php echo $portfolio_image; ?>" class="d-block photo-item">
+          <img loading="lazy" src="images/thumbnails/<?php echo $portfolio_image ?>" alt="Image" class="img-fluid">
+          <div class="photo-text-more">
             <div class="photo-text-more">
-              <div class="photo-text-more">
-                <h3 class="heading"><?php echo $portfolio_title ?></h3>
-                <span class="meta"><?php echo $portfolio_tagline ?></span>
+              <h3 class="heading"><?php echo $portfolio_title ?></h3>
+              <span class="meta"><?php echo $portfolio_tagline ?></span>
 
-              </div>
             </div>
-          </a>
-        </div>
+          </div>
+        </a>
+      </div>
 
 
 
     <?php }
-    } ?>
+    // } 
+    ?>
 
 
 
