@@ -9,7 +9,7 @@
     <?php
     $query = "SELECT * FROM portfolio";
     $select_all_portfolios_query = mysqli_query($connection, $query);
-    $portfolio_count = mysqli_num_rows($query);
+    $portfolio_count = mysqli_num_rows($select_all_portfolios_query);
     while ($row = mysqli_fetch_assoc($select_all_portfolios_query)) {
 
       $portfolio_title = $row['portfolio_title'];
