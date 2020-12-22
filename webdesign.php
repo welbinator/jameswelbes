@@ -9,7 +9,7 @@
     <?php
     $query = "SELECT * FROM portfolio";
     $select_all_portfolios_query = mysqli_query($connection, $query);
-
+    $rows = mysqli_num_rows($query);
     while ($row = mysqli_fetch_assoc($select_all_portfolios_query)) {
 
       $portfolio_title = $row['portfolio_title'];
@@ -17,7 +17,7 @@
       $portfolio_image = $row['portfolio_image'];
       $portfolio_id = $row['portfolio_id'];
 
-      $rows = mysqli_num_rows($query);
+
 
       // $array = array();
 
