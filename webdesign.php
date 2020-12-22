@@ -17,7 +17,7 @@
       $portfolio_image = $row['portfolio_image'];
       $portfolio_id = $row['portfolio_id'];
 
-      $rows = mysql_num_rows($query);
+      $rows = mysqli_num_rows($query);
 
       // $array = array();
 
