@@ -9,7 +9,7 @@
     <?php
     $query = "SELECT * FROM portfolio";
     $select_all_portfolios_query = mysqli_query($connection, $query);
-    $rows = mysqli_num_rows($query);
+    $portfolio_count = mysqli_num_rows($query);
     while ($row = mysqli_fetch_assoc($select_all_portfolios_query)) {
 
       $portfolio_title = $row['portfolio_title'];
@@ -21,14 +21,14 @@
 
       // $array = array();
 
-      // for ($x = 1; $x < $rows; $x++) {
+      // for ($x = 1; $x < $portfolio_count; $x++) {
       // array_push($array, $x);
 
 
     ?>
 
-      <h2><?php echo $rows; ?></h2>
-      <h2><?php printf($rows); ?></h2>
+      <h2><?php echo $portfolio_count; ?></h2>
+      <h2><?php printf($portfolio_count); ?></h2>
       <div class="col-6 col-md-6 col-lg-<?php randCol(3); ?>" data-aos="fade-up">
         <a data-fancybox="gallery" href="images/<?php echo $portfolio_image; ?>" class="d-block photo-item">
           <img loading="lazy" src="images/thumbnails/<?php echo $portfolio_image ?>" alt="Image" class="img-fluid">
