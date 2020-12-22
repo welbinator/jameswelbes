@@ -13,7 +13,7 @@ document.getElementById('site-logo').classList.add('rotate-center');
 document.getElementById('indexH2').classList.add('fadeInFromTop');
 document.getElementById('stuffs').classList.add('growFromMiddle');
 document.getElementById('stuffs').style.display = 'flex';
-document.getElementById('skip').style.display = 'none';
+// document.getElementById('skip').style.display = 'none';
 setTimeout(redirectHome, three);
 
 }
@@ -40,66 +40,71 @@ document.getElementById('quotes').style.opacity = '1';
 setTimeout(quotesOut,read);
 }
 
-
 function quotesOut () {
-document.getElementById('quotes').style.opacity = '0';
-setTimeout(thanksIn,next);
+  document.getElementById('quotes').style.opacity = '0';
+  setTimeout(headerIn,two);
+  
+  }
 
-}
+// function quotesOut () {
+// document.getElementById('quotes').style.opacity = '0';
+// setTimeout(thanksIn,next);
 
-function thanksIn () {
-document.getElementById('thanks').style.opacity = '1';
-setTimeout(thanksOut,read);
+// }
 
-}
+// function thanksIn () {
+// document.getElementById('thanks').style.opacity = '1';
+// setTimeout(thanksOut,read);
 
-function  thanksOut () {
-document.getElementById('thanks').style.opacity = '0';   
-setTimeout(nameIn,next);
+// }
 
-}
+// function  thanksOut () {
+// document.getElementById('thanks').style.opacity = '0';   
+// setTimeout(nameIn,next);
 
-function nameIn () {
-document.getElementById('name').style.opacity = '1';
-setTimeout(nameSpan,one);
+// }
 
-}
+// function nameIn () {
+// document.getElementById('name').style.opacity = '1';
+// setTimeout(nameSpan,one);
 
-function nameSpan () {
-document.getElementById('nameSpan').style.opacity = '1';
-setTimeout(nameSpan2,one);
+// }
 
-}
+// function nameSpan () {
+// document.getElementById('nameSpan').style.opacity = '1';
+// setTimeout(nameSpan2,one);
 
-function nameSpan2 () {
-document.getElementById('nameSpan2').style.opacity = '1';
-setTimeout(nameSpan3,one);
+// }
 
-}
+// function nameSpan2 () {
+// document.getElementById('nameSpan2').style.opacity = '1';
+// setTimeout(nameSpan3,one);
 
-function nameSpan3 () {
-document.getElementById('nameSpan3').style.opacity = '1';
-setTimeout(nameOut,two);
+// }
 
-}
+// function nameSpan3 () {
+// document.getElementById('nameSpan3').style.opacity = '1';
+// setTimeout(nameOut,two);
 
-function nameOut () {
-document.getElementById('name').style.opacity = '0';
-setTimeout(callMeIn,next);
+// }
 
-}
+// function nameOut () {
+// document.getElementById('name').style.opacity = '0';
+// setTimeout(callMeIn,next);
 
-function callMeIn () {
-document.getElementById('callMe').style.opacity = '1';
-setTimeout(callMeOut,next);
+// }
 
-}
+// function callMeIn () {
+// document.getElementById('callMe').style.opacity = '1';
+// setTimeout(callMeOut,next);
 
-function callMeOut () {
-document.getElementById('callMe').style.opacity = '0';
-setTimeout(headerIn,two);
+// }
 
-}
+// function callMeOut () {
+// document.getElementById('callMe').style.opacity = '0';
+// setTimeout(headerIn,two);
+
+// }
 
                                                
 

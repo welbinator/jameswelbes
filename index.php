@@ -17,7 +17,7 @@
         </div>
       </div>
 
-      <div id="thanks" class="fade">
+      <!-- <div id="thanks" class="fade">
         <div>
           <h1>Thank you for visiting JamesWelbes.com</h1><br>
 
@@ -39,7 +39,7 @@
           <h1>But you can call me <span style="color:#4285f4;">G</span><span style="color:#ea4335;">o</span><span style="color:#fbbc05;">o</span><span style="color:#4285f4;">g</span><span style="color:#34a853;">l</span><span style="color:#ea4335;">e</span> Hat Guy.</h1><br>
 
         </div>
-      </div>
+      </div> -->
 
 
     </div>
@@ -50,5 +50,5 @@
 
   </div>
 </div>
-<button id="skip" style="z-index:9999;" onclick="skip()" class="roll-in-right">Skip this weirdness</button>
+<!-- <button id="skip" style="z-index:9999;" onclick="skip()" class="roll-in-right">Skip this weirdness</button> -->
 <?php include "includes/footer.php"; ?>
