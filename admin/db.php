@@ -3,18 +3,12 @@
 $db['db_name'] = 'jameswelbes_portfolio';
 $db['db_user'] = 'jameswelbes_portfolio';
 $db['db_pass'] = 'h~Sv+0J9&HNN';
-$db['db_host'] = 'localhost';
+$db['db_host'] = '172.81.118.190';
 
-foreach($db as $key => $value) {
-  
+foreach ($db as $key => $value) {
+
   define(strtoupper($key), $value);
-  
-  
-  
 }
 
 
-$connection = mysqli_connect(DB_HOST,DB_USER,DB_PASS,DB_NAME);
-
-
-?>
+$connection = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);

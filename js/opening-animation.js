@@ -19,7 +19,7 @@ setTimeout(redirectHome, three);
 }
 
 function redirectHome() {
-location.href = '../home';
+location.href = 'home';
 }
 
 

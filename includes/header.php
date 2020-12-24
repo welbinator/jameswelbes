@@ -34,6 +34,7 @@
 
 
   <?php googleAnalytics(); ?>
+
 </head>
 
 <body>
