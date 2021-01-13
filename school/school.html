@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<link rel="stylesheet" href="school.css" />
+	</head>
+	<body>
+		<section></section>
+		<section>
+			<div class="img-container">
+				<div class="bar">
+					<div class="inner">
+						<div><p>2021</p></div>
+						<div><p>Rebrand</p></div>
+						<div><p>#01</p></div>
+					</div>
+				</div>
+				<img src="school.jpg" alt="" />
+			</div>
+		</section>
+
+		<script>
+			const img = document.querySelector(".img-container");
+			let options = {
+				threshold: 0.9,
+			};
+			const observer = new IntersectionObserver(animAfter, options);
+
+			function animAfter(entries) {
+				entries.forEach((entry) => {
+					if (entry.isIntersecting) {
+						entry.target.classList.add("anim");
+					} else if (!entry.isIntersecting) {
+						entry.target.classList.remove("anim");
+					}
+				});
+			}
+
+			observer.observe(img);
+		</script>
+	</body>
+</html>
