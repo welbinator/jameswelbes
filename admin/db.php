@@ -1,6 +1,6 @@
 <?php
 
-$db['db_name'] = 'jameswelbes_portfolio';
+$db['db_name'] = 'jameswel_8js8dj98d';
 $db['db_user'] = 'jameswelbes_portfolio';
 $db['db_pass'] = 'h~Sv+0J9&HNN';
 $db['db_host'] = '67.227.174.185';
