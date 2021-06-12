@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <section>
+    <div id="chrome_popup_modal"><p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Distinctio, aperiam!</p>
+        <div><p>I agree with the disclaimer<input type="checkbox" name="chrome" onclick="chromeCheckboxChecked()"></p></div></div>
+    
+    <button onclick="showChromePopupModal()">Simulate Chrome Product</button>
+    <input id="credit-card-button" name="checkout_credit_card" type="submit" value="Pay With Your Credit Card">
+    </section>
+    
+</body>
+</html>
+
+
+
+
+<script>
+const checkoutBtn = document.querySelector("input[name=checkout_credit_card");
+const chromePopupModal = document.querySelector("#chrome_popup_modal");
+const chromeCheckbox = document.querySelector("input[name=chrome");
+
+function chromeCheckboxChecked() {
+    chromePopupModal.classList.remove("showChromePopupModal");
+    checkoutBtn.disabled = false;
+
+}
+
+function showChromePopupModal() {
+    chromePopupModal.classList.add("showChromePopupModal");
+    checkoutBtn.disabled = true;
+    chromeCheckbox.checked=false;
+}
+
+chromeCheckbox.addEventListener("click", chromeCheckboxChecked);
+
+
+   
+
+</script>
+
+<style>
+    input[type=checkbox] {
+        height: 15px;
+        width: 15px;
+        margin-left: 10px;
+    }
+    section {
+        height: 100vh;
+        display: grid;
+        place-items: center;
+        position: relative;
+    }
+    #credit-card-button {
+        position: absolute;
+        right: 0;
+        bottom: 10vh;
+    }
+#chrome_popup_modal {
+    opacity: 0;
+    pointer-events: none;
+    transition: all .6s ease;
+}
+#chrome_popup_modal.showChromePopupModal {
+    opacity: 1;
+    pointer-events: all;
+}
+
+</style>
