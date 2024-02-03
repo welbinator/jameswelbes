@@ -1,0 +1,12 @@
+{
+    "name": "highprrrr/jameswelbes",
+    "authors": [
+        {
+            "name": "James Welbes",
+            "email": "james.welbes@gmail.com"
+        }
+    ],
+    "require": {
+        "ezyang/htmlpurifier": "^4.17"
+    }
+}
