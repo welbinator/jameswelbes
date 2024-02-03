@@ -21,7 +21,7 @@
           <p>At the beginning of 2019 I joined the organizing team for 1 Million Cups Cedar Rapids. My main duties included kicking the event off, introducing the speaker, and acting like I knew what was going on. I absolutely loved it.</p>
           <p>In what little free time I have, I like to play video games, soccer, and I'm especially fond of relaxing in my hammock, with a good cigar and a good book. I also like to dabble in amateur woodworking.</p>
           <p>If you've made it this far, you have way too much time on your hands and you should really consider getting a hobby. I know for a fact I'm not that interesting, I almost fell asleep twice writing this.</p>
-          <p>If for some reason you would like to get in touch with me, I'd love to connect! You can find me on the interwebs via those cute little icons in the menu, or you can fill out my <a href="contact.php">contact form</a> and I'll probably respond.</p>
+          <p>If for some reason you would like to get in touch with me, I'd love to connect! You can find me on the interwebs via those cute little icons in the menu, or you can fill out my <a href="contact">contact form</a> and I'll probably respond.</p>
           <p>Thanks for checking me out and God bless!</p>
 
           <p cass="mt-4">Thanks! <br> -Google Hat Guy.</p>
