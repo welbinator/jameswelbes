@@ -12,7 +12,7 @@
     <div id="animation">
       <div id="quotes" class="fade">
         <div>
-          <h1>"Adding quotes to website landing pages is stupid."</h1><br>
+          <h1>"Adding quotes to landing pages is stupid."</h1><br>
           <h3>-James Welbes</h3>
         </div>
       </div>
