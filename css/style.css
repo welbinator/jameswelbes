@@ -1171,7 +1171,15 @@ h1, h2, h3, h4, h5,
 
 @media (max-width: 575.98px) {
         .main-content .photos .photo-item img {
-          height: 200px; } }
+          height: 200px; } 
+          .main-content .photos .photo-item:hover .photo-text-more {
+          opacity: 0;
+          pointer-events: none;
+          visibility: 0;
+          display: none;
+        }
+        
+        }
 
 
 
