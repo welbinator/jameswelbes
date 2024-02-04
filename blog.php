@@ -68,7 +68,7 @@
 
           <div class="row">
             <div class="col-md-12" data-aos="fade-up">
-              <div class="d-flex blog-entry align-items-start">
+              <div class="d-flex blog-entry align-items-start flex-wrap">
                 <div class="mr-5 img-wrap"><a href="single.php?p_id=<?php echo $post_id; ?>"><img loading="lazy" src="images/posts/<?php echo $post_image; ?>" alt="Image" class="img-fluid"></a></div>
                 <div class="blog-archive-content-box">
                   <h2 class="mt-0 mb-2"><a href="single.php?p_id=<?php echo $post_id; ?>"><?php echo $post_title; ?></a></h2>
