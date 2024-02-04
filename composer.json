@@ -8,5 +8,9 @@
     ],
     "require": {
         "ezyang/htmlpurifier": "^4.17"
+    },
+    "scripts": {
+        "readyForDev": "php readyForDev.php",
+        "readyForProd": "php readyForProd.php"
     }
 }
