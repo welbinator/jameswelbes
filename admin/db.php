@@ -18,7 +18,7 @@ $dbConfigs = [
 
 // Toggle between 'prodDB' and 'devDB' based on your current environment
 // This line will be modified by your readyForDev or readyForProd scripts
-$currentDbConfig = $dbConfigs['devDB']; // Default to devDB
+$currentDbConfig = $dbConfigs['prodDB']; // Default to devDB
 
 // Extracting the selected database configuration
 extract($currentDbConfig);
