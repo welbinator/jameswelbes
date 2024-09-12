@@ -3,7 +3,7 @@ ini_set('log_errors', 1);
 ini_set('error_log', '../admin/php-error.log'); // Use the path to your log file
 ini_set('display_errors', 1); // You can turn this off in production
 error_reporting(E_ALL);
-trigger_error("This is a test error!", E_USER_NOTICE);
+
 
 
 require_once "../admin/db.php";
@@ -17,19 +17,23 @@ if ($connection->connect_error) {
 // Check if form was submitted
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     echo "Form submitted.<br>";
+    error_log("Form submitted.");
 
     $input_username = htmlspecialchars(trim($_POST['username']));
     $input_password = htmlspecialchars(trim($_POST['password']));
 
     echo "Username: $input_username<br>";
-    echo "Password: $input_password<br>";
+    echo "Password entered.<br>";
+    error_log("Username entered: $input_username");
+    error_log("Password entered.");
 
-    // Prepare a SQL statement to prevent SQL injection
+    // Prepare a SQL statement to check the username
     $query = "SELECT * FROM users WHERE username = ?";
     $stmt = $connection->prepare($query);
 
     if (!$stmt) {
-        echo "Failed to prepare statement: " . $connection->error;
+        echo "Failed to prepare statement: " . $connection->error . "<br>";
+        error_log("Failed to prepare statement: " . $connection->error);
         exit();
     }
 
@@ -37,9 +41,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->execute();
     $result = $stmt->get_result();
 
+    echo "Query executed.<br>";
+    error_log("Query executed.");
+
     // Check if a user with the provided username exists
     if ($result->num_rows === 1) {
         echo "User found.<br>";
+        error_log("User found.");
         $user = $result->fetch_assoc();
 
         // Verify the hashed password
@@ -48,15 +56,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['loggedin'] = true;
             $_SESSION['username'] = $user['username']; // Store the username in session
             echo "Login successful!<br>";
+            error_log("Login successful.");
             header('Location: index.php'); // Redirect to admin area
             exit();
         } else {
             // Incorrect password
             echo "Invalid password.<br>";
+            error_log("Invalid password.");
         }
     } else {
         // Username doesn't exist
         echo "User not found.<br>";
+        error_log("User not found.");
     }
 
     $stmt->close();
