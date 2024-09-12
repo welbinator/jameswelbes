@@ -1,7 +1,9 @@
 <?php
+ini_set('log_errors', 1);
+ini_set('error_log', '/path/to/php-error.log');
 ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
+
 
 session_start();
 require_once '../admin/db.php'; // Ensure this file connects to your database
