@@ -1,12 +1,6 @@
 <?php
-ini_set('log_errors', 1);
-ini_set('error_log', 'php-error.log');
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
-
-
-session_start();
-require_once '../admin/db.php'; // Ensure this file connects to your database
+// Include admin header
+require_once "admin_header.php";
 
 // Check if form was submitted
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
