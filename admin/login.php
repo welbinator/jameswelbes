@@ -4,6 +4,8 @@ ini_set('error_log', '../admin/php-error.log'); // Use the path to your log file
 ini_set('display_errors', 1); // You can turn this off in production
 error_reporting(E_ALL);
 
+echo "PHP script executed.<br>";
+error_log("PHP script executed.");
 
 session_start();
 require_once "../admin/db.php";
