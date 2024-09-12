@@ -27,29 +27,6 @@ header("X-Content-Type-Options: nosniff"); // Prevent MIME-based attacks.
 header("X-Frame-Options: SAMEORIGIN"); // Prevent clickjacking.
 header("Strict-Transport-Security: max-age=31536000; includeSubDomains; preload"); // Enforce HTTPS.
 ?>
-<?php
-
-
-// Admin username and password
-$username = 'james';
-$password = 'Isaiah117!@';
-
-// Hash the password before storing it
-$hashed_password = password_hash($password, PASSWORD_DEFAULT);
-
-// Insert the admin credentials into the database
-$query = "INSERT INTO users (username, password) VALUES (?, ?)";
-$stmt = $connection->prepare($query);
-$stmt->bind_param('ss', $username, $hashed_password);
-
-if ($stmt->execute()) {
-    echo "Admin user created successfully!";
-} else {
-    echo "Error: " . $stmt->error;
-}
-
-$stmt->close();
-?>
 
 
 <!DOCTYPE html>
