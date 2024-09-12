@@ -4,16 +4,24 @@ ini_set('error_log', '../admin/php-error.log'); // Use the path to your log file
 ini_set('display_errors', 1); // You can turn this off in production
 error_reporting(E_ALL);
 
-echo "PHP script executed.<br>";
-error_log("PHP script executed.");
-
-session_start();
+session_start(); // Start the session at the top before any output
 require_once "../admin/db.php";
 
+// Test session start
+if (!isset($_SESSION)) {
+    echo "Session not started.<br>";
+    error_log("Session not started.");
+} else {
+    echo "Session started successfully.<br>";
+    error_log("Session started successfully.");
+}
+
+// Check if the database connection is working
 if ($connection->connect_error) {
     die("Connection failed: " . $connection->connect_error);
 } else {
-    echo "Database connection successful!";
+    echo "Database connection successful!<br>";
+    error_log("Database connection successful.");
 }
 
 // Check if form was submitted
