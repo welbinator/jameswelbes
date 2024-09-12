@@ -7,15 +7,6 @@ error_reporting(E_ALL);
 session_start(); // Start the session at the top before any output
 require_once "../admin/db.php";
 
-// Test session start
-if (!isset($_SESSION)) {
-    echo "Session not started.<br>";
-    error_log("Session not started.");
-} else {
-    echo "Session started successfully.<br>";
-    error_log("Session started successfully.");
-}
-
 // Check if the database connection is working
 if ($connection->connect_error) {
     die("Connection failed: " . $connection->connect_error);
@@ -33,9 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $input_password = htmlspecialchars(trim($_POST['password']));
 
     echo "Username: $input_username<br>";
-    echo "Password entered.<br>";
     error_log("Username entered: $input_username");
-    error_log("Password entered.");
 
     // Prepare a SQL statement to check the username
     $query = "SELECT * FROM users WHERE username = ?";
@@ -51,33 +40,38 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->execute();
     $result = $stmt->get_result();
 
-    echo "Query executed.<br>";
-    error_log("Query executed.");
-
-    // Check if a user with the provided username exists
-    if ($result->num_rows === 1) {
-        echo "User found.<br>";
-        error_log("User found.");
-        $user = $result->fetch_assoc();
-
-        // Verify the hashed password
-        if (password_verify($input_password, $user['password'])) {
-            // Credentials are valid, log the user in
-            $_SESSION['loggedin'] = true;
-            $_SESSION['username'] = $user['username']; // Store the username in session
-            echo "Login successful!<br>";
-            error_log("Login successful.");
-            header('Location: index.php'); // Redirect to admin area
-            exit();
-        } else {
-            // Incorrect password
-            echo "Invalid password.<br>";
-            error_log("Invalid password.");
-        }
+    if ($result === false) {
+        echo "Failed to execute query: " . $stmt->error . "<br>";
+        error_log("Failed to execute query: " . $stmt->error);
     } else {
-        // Username doesn't exist
-        echo "User not found.<br>";
-        error_log("User not found.");
+        echo "Query executed.<br>";
+        error_log("Query executed.");
+
+        // Check if a user with the provided username exists
+        if ($result->num_rows === 1) {
+            echo "User found.<br>";
+            error_log("User found.");
+            $user = $result->fetch_assoc();
+
+            // Verify the hashed password
+            if (password_verify($input_password, $user['password'])) {
+                // Credentials are valid, log the user in
+                $_SESSION['loggedin'] = true;
+                $_SESSION['username'] = $user['username']; // Store the username in session
+                echo "Login successful!<br>";
+                error_log("Login successful.");
+                header('Location: index.php'); // Redirect to admin area
+                exit();
+            } else {
+                // Incorrect password
+                echo "Invalid password.<br>";
+                error_log("Invalid password.");
+            }
+        } else {
+            // Username doesn't exist
+            echo "User not found.<br>";
+            error_log("User not found.");
+        }
     }
 
     $stmt->close();
