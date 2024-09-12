@@ -1,12 +1,18 @@
 <?php
 ini_set('log_errors', 1);
-ini_set('error_log', 'php-error.log'); // Use the path to your log file
+ini_set('error_log', '../admin/php-error.log'); // Use the path to your log file
 ini_set('display_errors', 1); // You can turn this off in production
 error_reporting(E_ALL);
 trigger_error("This is a test error!", E_USER_NOTICE);
 
 
 require_once "../admin/db.php";
+
+if ($connection->connect_error) {
+    die("Connection failed: " . $connection->connect_error);
+} else {
+    echo "Database connection successful!";
+}
 
 // Check if form was submitted
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
