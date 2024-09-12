@@ -1,10 +1,13 @@
 <?php
 ini_set('log_errors', 1);
-ini_set('error_log', '../admin/php-error.log'); // Use the path to your log file
-ini_set('display_errors', 1); // You can turn this off in production
+ini_set('error_log', '../admin/php-error.log'); // Use the correct path to your log file
+ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
-session_start(); // Start the session at the top before any output
+// Start output buffering
+ob_start();
+
+session_start(); // Start the session at the top
 require_once "../admin/db.php";
 
 // Check if the database connection is working
@@ -61,6 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 echo "Login successful!<br>";
                 error_log("Login successful.");
                 header('Location: index.php'); // Redirect to admin area
+                ob_end_flush(); // Flush the output buffer
                 exit();
             } else {
                 // Incorrect password
@@ -76,6 +80,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $stmt->close();
 }
+
+// Flush the output buffer
+ob_end_flush();
 ?>
 
 <!DOCTYPE html>
