@@ -30,9 +30,11 @@ define('DB_PASS', $db_pass);
 define('DB_HOST', $db_host);
 
 // Establish the database connection
-$connection = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
-
-// Check the connection
-if (!$connection) {
-    die("Database connection failed: " . mysqli_connect_error());
+$connection = new mysqli('localhost', 'db_user', 'db_password', 'db_name');
+if ($connection->connect_error) {
+    die("Connection failed: " . $connection->connect_error);
 }
+echo "DB connection successful.<br>";
+error_log("DB connection successful.");
+
+
