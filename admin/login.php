@@ -1,6 +1,12 @@
 <?php
-// Include admin header
-require_once "admin_header.php";
+ini_set('log_errors', 1);
+ini_set('error_log', 'php-error.log'); // Use the path to your log file
+ini_set('display_errors', 1); // You can turn this off in production
+error_reporting(E_ALL);
+trigger_error("This is a test error!", E_USER_NOTICE);
+
+
+require_once "../admin/db.php";
 
 // Check if form was submitted
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
