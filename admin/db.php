@@ -9,10 +9,10 @@ $dbConfigs = [
         'db_host' => '67.225.162.139',
     ],
     'devDB' => [
-        'db_name' => 'lamp',
-        'db_user' => 'lamp',
-        'db_pass' => 'lamp',
-        'db_host' => 'database',
+        'db_name' => 'jameswel_8js8dj98d',
+        'db_user' => 'jameswelbes_portfolio',
+        'db_pass' => 'h~Sv+0J9&HNN',
+        'db_host' => 'localhost',
     ]
 ];
 

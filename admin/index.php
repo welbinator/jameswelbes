@@ -1,76 +1,75 @@
-<?php include "admin_header.php"; ?>
+<?php
+// Include admin header
+require_once "admin_header.php";
+?>
 
-    <div id="wrapper">
+<div id="wrapper">
+    
+    <!-- Navigation -->
+    <?php require_once "admin_navigation.php"; ?>
 
-      
-      
-      
-        <!-- Navigation -->
-       <?php include "admin_navigation.php"; ?>
+    <div id="page-wrapper">
+        <div class="container-fluid">
 
-        <div id="page-wrapper">
+            <!-- Page Heading -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Posts</h1>
 
-            <div class="container-fluid">
-
-                <!-- Page Heading -->
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h1 class="page-header">
-                            Posts
-                            
-                        </h1>
-<table class="table table-bordered table-hover">
+                    <table class="table table-bordered table-hover">
                         <thead>
-                          <th>Id</th>
-                            
-                            <th>Title</th>
-                            
-                            <th>Image</th>
-                            
-                          </tr>
+                            <tr>
+                                <th>Id</th>
+                                <th>Title</th>
+                                <th>Image</th>
+                            </tr>
                         </thead>
-                      <tbody>
-                          <?php
-                          $query = "SELECT * FROM portfolio";
-                          $select_portfolios = mysqli_query($connection, $query);
-                          
-                          while ($row = mysqli_fetch_assoc($select_portfolios)) {
-                          $portfolio_id = $row['portfolio_id'];
-                          
-                            $portfolio_title = $row['portfolio_title'];
-                            
-                            $portfolio_image = $row['portfolio_image'];
-                           
-                            
-                            echo "<tr>";
-                            echo "<td>$portfolio_id</td>";
-                           
-                            echo "<td>$portfolio_title</td>";
-                            
-                           
-                            echo "<td><img width='100' src='../$portfolio_image'></td>";
-                           
-                            echo "</tr>";
-                            
-                            
-                            
-                          }
-                          
-                          ?>
-                            
-                        
-                       
-                      </tbody>
-                      </table>
-   
-</div>
-                </div>
-                <!-- /.row -->
+                        <tbody>
+                            <?php
+                            // Prepare the SQL query to prevent SQL injection
+                            $query = "SELECT portfolio_id, portfolio_title, portfolio_image FROM portfolio";
+                            if ($stmt = $connection->prepare($query)) {
+                                // Execute the statement
+                                $stmt->execute();
 
+                                // Bind result variables
+                                $stmt->bind_result($portfolio_id, $portfolio_title, $portfolio_image);
+
+                                // Fetch and display the results
+                                while ($stmt->fetch()) {
+                                    // Escape output to prevent XSS
+                                    $portfolio_id_escaped = htmlspecialchars($portfolio_id, ENT_QUOTES, 'UTF-8');
+                                    $portfolio_title_escaped = htmlspecialchars($portfolio_title, ENT_QUOTES, 'UTF-8');
+                                    $portfolio_image_escaped = htmlspecialchars($portfolio_image, ENT_QUOTES, 'UTF-8');
+
+                                    echo "<tr>";
+                                    echo "<td>{$portfolio_id_escaped}</td>";
+                                    echo "<td>{$portfolio_title_escaped}</td>";
+                                    echo "<td><img width='100' src='../{$portfolio_image_escaped}' alt='Portfolio Image'></td>";
+                                    echo "</tr>";
+                                }
+
+                                // Close the statement
+                                $stmt->close();
+                            } else {
+                                // Handle query error
+                                echo "<tr><td colspan='3'>Error fetching portfolio data.</td></tr>";
+                            }
+                            ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-            <!-- /.container-fluid -->
+            <!-- /.row -->
 
         </div>
-        <!-- /#page-wrapper -->
+        <!-- /.container-fluid -->
+    </div>
+    <!-- /#page-wrapper -->
+</div>
+<!-- /#wrapper -->
 
-   <?php include "admin_footer.php"; ?>
+<?php
+// Include admin footer
+require_once "admin_footer.php";
+?>

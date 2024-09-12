@@ -1,58 +1,50 @@
-<?php include "admin_header.php"; ?>
+<?php
+// Include admin header
+require_once "admin_header.php";
+?>
 
-    <div id="wrapper">
+<div id="wrapper">
+    <!-- Navigation -->
+    <?php require_once "admin_navigation.php"; ?>
 
-        <!-- Navigation -->
-       <?php include "admin_navigation.php"; ?>
+    <div id="page-wrapper">
+        <div class="container-fluid">
+            <!-- Page Heading -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">
+                        Posts
+                    </h1>
 
-        <div id="page-wrapper">
+                    <?php
+                    // Check if 'source' is set, and escape it for security
+                    $source = isset($_GET['source']) ? escape($_GET['source']) : '';
 
-            <div class="container-fluid">
-
-                <!-- Page Heading -->
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h1 class="page-header">
-                            Posts
-
-                        </h1>
-
-
-                       <?php
-
-                      if(isset($_GET['source'])){
-
-                        $source = escape_string($_GET['source']);
-
-                      } else {
-
-                        $source = '';
-                      }
-
-
-                      switch($source) {
+                    // Switch between different views based on the source value
+                    switch ($source) {
                         case 'add_post':
-                            include "includes/add_post.php";
+                            require_once "includes/add_post.php";
                             break;
                         case 'edit_post':
-                            include "includes/edit_post.php";
+                            require_once "includes/edit_post.php";
                             break;
                         default:
-                            include "includes/view_all_posts.php";
+                            require_once "includes/view_all_posts.php";
                             break;
                     }
+                    ?>
 
-
-                      ?>
-
-                    </div>
                 </div>
-                <!-- /.row -->
-
             </div>
-            <!-- /.container-fluid -->
-
+            <!-- /.row -->
         </div>
-        <!-- /#page-wrapper -->
+        <!-- /.container-fluid -->
+    </div>
+    <!-- /#page-wrapper -->
+</div>
+<!-- /#wrapper -->
 
-   <?php include "admin_footer.php"; ?>
+<?php
+// Include admin footer
+require_once "admin_footer.php";
+?>
