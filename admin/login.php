@@ -1,21 +1,23 @@
 <?php
 ini_set('log_errors', 1);
-ini_set('error_log', '../admin/php-error.log'); // Use the correct path to your log file
-ini_set('display_errors', 1);
+ini_set('error_log', '../admin/php-error.log'); // Use the path to your log file
+ini_set('display_errors', 1); // You can turn this off in production
 error_reporting(E_ALL);
 
-// Start output buffering
-ob_start();
+echo "PHP script executed.<br>";
+error_log("PHP script executed.");
 
-session_start(); // Start the session at the top
+// Start the session
+session_start();
+
+// Database connection
 require_once "../admin/db.php";
 
-// Check if the database connection is working
 if ($connection->connect_error) {
     die("Connection failed: " . $connection->connect_error);
 } else {
     echo "Database connection successful!<br>";
-    error_log("Database connection successful.");
+    error_log("Database connection successful!");
 }
 
 // Check if form was submitted
@@ -27,7 +29,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $input_password = htmlspecialchars(trim($_POST['password']));
 
     echo "Username: $input_username<br>";
+    echo "Password entered.<br>";
     error_log("Username entered: $input_username");
+    error_log("Password entered.");
 
     // Prepare a SQL statement to check the username
     $query = "SELECT * FROM users WHERE username = ?";
@@ -43,46 +47,37 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->execute();
     $result = $stmt->get_result();
 
-    if ($result === false) {
-        echo "Failed to execute query: " . $stmt->error . "<br>";
-        error_log("Failed to execute query: " . $stmt->error);
-    } else {
-        echo "Query executed.<br>";
-        error_log("Query executed.");
+    echo "Query executed.<br>";
+    error_log("Query executed.");
 
-        // Check if a user with the provided username exists
-        if ($result->num_rows === 1) {
-            echo "User found.<br>";
-            error_log("User found.");
-            $user = $result->fetch_assoc();
+    // Check if a user with the provided username exists
+    if ($result->num_rows === 1) {
+        echo "User found.<br>";
+        error_log("User found.");
+        $user = $result->fetch_assoc();
 
-            // Verify the hashed password
-            if (password_verify($input_password, $user['password'])) {
-                // Credentials are valid, log the user in
-                $_SESSION['loggedin'] = true;
-                $_SESSION['username'] = $user['username']; // Store the username in session
-                echo "Login successful!<br>";
-                error_log("Login successful.");
-                header('Location: index.php'); // Redirect to admin area
-                ob_end_flush(); // Flush the output buffer
-                exit();
-            } else {
-                // Incorrect password
-                echo "Invalid password.<br>";
-                error_log("Invalid password.");
-            }
+        // Verify the hashed password
+        if (password_verify($input_password, $user['password'])) {
+            // Credentials are valid, log the user in
+            $_SESSION['loggedin'] = true;
+            $_SESSION['username'] = $user['username']; // Store the username in session
+            echo "Login successful!<br>";
+            error_log("Login successful.");
+            header('Location: index.php'); // Redirect to admin area
+            exit();
         } else {
-            // Username doesn't exist
-            echo "User not found.<br>";
-            error_log("User not found.");
+            // Incorrect password
+            echo "Invalid password.<br>";
+            error_log("Invalid password.");
         }
+    } else {
+        // Username doesn't exist
+        echo "User not found.<br>";
+        error_log("User not found.");
     }
 
     $stmt->close();
 }
-
-// Flush the output buffer
-ob_end_flush();
 ?>
 
 <!DOCTYPE html>
