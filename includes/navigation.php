@@ -1,14 +1,14 @@
 <div class="main-menu">
       <ul id="main-nav" class="js-clone-nav">
-        <li><a href="home">Home</a></li>
+        <li><a href="home.php">Home</a></li>
         
-        <li><a href="bio">Bio</a></li>
+        <li><a href="bio.php">Bio</a></li>
         
-        <li><a href="contact">Contact</a></li>
+        <li><a href="contact.php">Contact</a></li>
         
-        <li><a href="webdesign">Web Design</a></li>
+        <li><a href="webdesign.php">Web Design</a></li>
         
-        <li><a href="blog">Blog</a></li>
+        <li><a href="blog.php">Blog</a></li>
       </ul>
      
   

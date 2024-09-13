@@ -4,30 +4,6 @@ require_once "admin/db.php";
 require_once "functions.php";
 ?>
 
-<?php
-
-
-// Admin username and password
-$username = 'james';
-$password = 'pepsidude';
-
-// Hash the password before storing it
-$hashed_password = password_hash($password, PASSWORD_DEFAULT);
-
-// Insert the admin credentials into the database
-$query = "INSERT INTO users (username, password) VALUES (?, ?)";
-$stmt = $connection->prepare($query);
-$stmt->bind_param('ss', $username, $hashed_password);
-
-if ($stmt->execute()) {
-    echo "Admin user created successfully!";
-} else {
-    echo "Error: " . $stmt->error;
-}
-
-$stmt->close();
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
