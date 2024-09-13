@@ -1,8 +1,4 @@
 <?php
-// Set up error logging
-ini_set('log_errors', 1);
-ini_set('display_errors', 1); // Set to 0 in production
-error_reporting(E_ALL);
 
 // Database configurations
 $dbConfigs = [
@@ -36,10 +32,7 @@ define('DB_HOST', $db_host);
 // Establish the database connection
 $connection = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
-
-if ($connection->connect_error) {
-    error_log("Connection failed: " . $connection->connect_error);
-    die("Connection failed: " . $connection->connect_error);
-} else {
-    error_log("DB connection successful.");
+// Check the connection
+if (!$connection) {
+    die("Database connection failed: " . mysqli_connect_error());
 }
