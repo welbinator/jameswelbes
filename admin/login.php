@@ -12,7 +12,7 @@ echo $undefined_variablee;
 
 // Database connection
 require_once "../admin/db.php";
-
+phpinfo();
 if ($connection->connect_error) {
     die("Connection failed: " . $connection->connect_error);
 } else {
