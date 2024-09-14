@@ -2,7 +2,9 @@
 ob_start(); // Start output buffering
 
 ini_set('log_errors', 1);
-ini_set('error_log', '../admin/php-error.log'); 
+// ini_set('error_log', '../admin/php-error.log'); 
+ini_set('error_log', '/home/jameswelbes/public_html/admin/php-error.log');
+
 ini_set('display_errors', 1); // You can turn this off in production
 error_reporting(E_ALL);
 
