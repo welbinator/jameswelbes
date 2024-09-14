@@ -9,7 +9,7 @@ error_reporting(E_ALL);
 
 session_start(); // Ensure this is at the very top
 echo $undefined_variablee;
-
+phpinfo();
 // Database connection
 require_once "../admin/db.php";
 
