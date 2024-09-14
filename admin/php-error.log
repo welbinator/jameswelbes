@@ -1,0 +1,16 @@
+[14-Sep-2024 05:38:01 Europe/Berlin] PHP Warning:  Undefined variable $undefined_variable in /opt/lampp/htdocs/jameswelbes/admin/login.php on line 10
+[14-Sep-2024 05:38:01 Europe/Berlin] Database connection successful.
+[14-Sep-2024 05:38:01 Europe/Berlin] Form submitted.
+[14-Sep-2024 05:38:01 Europe/Berlin] Username entered: james
+[14-Sep-2024 05:38:01 Europe/Berlin] Password entered.
+[14-Sep-2024 05:38:01 Europe/Berlin] Query executed.
+[14-Sep-2024 05:38:01 Europe/Berlin] User found.
+[14-Sep-2024 05:38:01 Europe/Berlin] Invalid password.
+[14-Sep-2024 05:38:11 Europe/Berlin] PHP Warning:  Undefined variable $undefined_variable in /opt/lampp/htdocs/jameswelbes/admin/login.php on line 10
+[14-Sep-2024 05:38:11 Europe/Berlin] Database connection successful.
+[14-Sep-2024 05:38:11 Europe/Berlin] Form submitted.
+[14-Sep-2024 05:38:11 Europe/Berlin] Username entered: james
+[14-Sep-2024 05:38:11 Europe/Berlin] Password entered.
+[14-Sep-2024 05:38:11 Europe/Berlin] Query executed.
+[14-Sep-2024 05:38:11 Europe/Berlin] User found.
+[14-Sep-2024 05:38:11 Europe/Berlin] Login successful.

@@ -7,9 +7,7 @@ ini_set('display_errors', 1); // You can turn this off in production
 error_reporting(E_ALL);
 
 session_start(); // Ensure this is at the very top
-
-echo "PHP script executed.<br>";
-error_log("PHP script executed.");
+echo $undefined_variable;
 
 // Database connection
 require_once "../admin/db.php";
