@@ -16,12 +16,12 @@ require_once "functions.php";
 require '../vendor/autoload.php';
 
 // Set headers for security
-header("Cache-Control: no-cache, no-store, must-revalidate"); // HTTP 1.1.
-header("Pragma: no-cache"); // HTTP 1.0.
-header("Expires: 0"); // Proxies.
-header("X-Content-Type-Options: nosniff"); // Prevent MIME-based attacks.
-header("X-Frame-Options: SAMEORIGIN"); // Prevent clickjacking.
-header("Strict-Transport-Security: max-age=31536000; includeSubDomains; preload"); // Enforce HTTPS.
+// header("Cache-Control: no-cache, no-store, must-revalidate"); // HTTP 1.1.
+// header("Pragma: no-cache"); // HTTP 1.0.
+// header("Expires: 0"); // Proxies.
+// header("X-Content-Type-Options: nosniff"); // Prevent MIME-based attacks.
+// header("X-Frame-Options: SAMEORIGIN"); // Prevent clickjacking.
+// header("Strict-Transport-Security: max-age=31536000; includeSubDomains; preload"); // Enforce HTTPS.
 ?>
 
 
