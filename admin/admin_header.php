@@ -5,7 +5,7 @@
 
 
 // Start output buffering
-ob_start();
+// ob_start();
 
 
 // Include database connection and functions
