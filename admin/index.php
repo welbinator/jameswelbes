@@ -5,13 +5,13 @@ require_once "admin_header.php";
 echo $_SESSION;
 
 // Check if the user is logged in and redirect if not
-if (!isset($_SESSION['loggedin']) ) {
-    header('Location: login.php');
-    exit();
+// if (!isset($_SESSION['loggedin']) ) {
+//     header('Location: login.php');
+//     exit();
    
-} else {
-    header('Location: sites.php');
-}
+// } else {
+//     header('Location: sites.php');
+// }
 ?>
 
 <div id="wrapper">
