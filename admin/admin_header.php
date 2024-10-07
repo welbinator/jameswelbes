@@ -4,11 +4,11 @@ session_start();
 
 // Check if the user is logged in and redirect if not
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
-    echo "<script>alert('User is not logged in. Redirecting to login.');</script>";
+   
     header('Location: login.php');
     exit();
 } else {
-    echo "<script>alert('User is logged in as: " . $_SESSION['username'] . "');</script>";
+   
     // Proceed with the page content
 }
 
