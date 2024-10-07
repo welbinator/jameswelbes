@@ -1,4 +1,5 @@
 <?php
+session_start(); // Ensure this is at the very top
 ob_start(); // Start output buffering
 
 // ini_set('log_errors', 1);
@@ -7,7 +8,7 @@ ob_start(); // Start output buffering
 ini_set('display_errors', 1);
 // error_reporting(E_ALL);
 
-session_start(); // Ensure this is at the very top
+
 // echo $undefined_variable;
 
 // Database connection
