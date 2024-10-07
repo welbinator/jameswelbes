@@ -2,28 +2,15 @@
 // Include admin header
 require_once "admin_header.php";
 
-// Log session variables to check if they're set correctly
-if (isset($_SESSION['loggedin'])) {
-    $loggedInStatus = $_SESSION['loggedin'] ? 'true' : 'false';
-    echo "<script>alert('Session \"loggedin\" value: " . $loggedInStatus . "');</script>";
-} else {
-    echo "<script>alert('Session \"loggedin\" is not set.');</script>";
-}
-
-if (isset($_SESSION['username'])) {
-    echo "<script>alert('Session \"username\" value: " . $_SESSION['username'] . "');</script>";
-} else {
-    echo "<script>alert('Session \"username\" is not set.');</script>";
-}
+echo $_SESSION;
 
 // Check if the user is logged in and redirect if not
-if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
-    echo "<script>alert('User is not logged in. Redirecting to login.');</script>";
+if (isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == 1) {
+   // Proceed with the page content
+} else {
+    
     header('Location: login.php');
     exit();
-} else {
-    echo "<script>alert('User is logged in as: " . $_SESSION['username'] . "');</script>";
-    // Proceed with the page content
 }
 ?>
 
@@ -38,6 +25,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
             <!-- Page Heading -->
             <div class="row">
                 <div class="col-lg-12">
+                    <?php echo $_SESSION['loggedin']; ?>
                     <h1 class="page-header">Posts</h1>
 
                     <table class="table table-bordered table-hover">

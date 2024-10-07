@@ -1,9 +1,5 @@
 <?php session_start();
 
-// Log session information using alerts
-echo "<script>alert('Session ID: " . session_id() . "');</script>"; // Log session ID
-
-
 
 // Include database connection and functions
 require_once "../admin/db.php";
