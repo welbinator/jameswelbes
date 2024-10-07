@@ -61,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             echo "<script>alert('Login successful!\\nSession Logged in: " . $_SESSION['loggedin'] . "\\nUsername: " . $_SESSION['username'] . "');</script>";
 
-            // header('Location: index.php'); // Redirect to admin area
+            header('Location: index.php'); // Redirect to admin area
             exit();
         } else {
             // Incorrect password
