@@ -12,7 +12,8 @@ if ($connection->connect_error) {
 } else {
     echo "Database connection successful!<br>";
 }
-
+echo  $_SESSION['loggedin'];
+echo  $_SESSION['username'];
 // Check if form was submitted
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     echo "<script>alert('Form submitted.');</script>";
