@@ -1,19 +1,15 @@
-<?php session_start();
-
+<?php
+session_start();
 ob_start(); // Start output buffering
-
 
 ini_set('display_errors', 1);
 
-
 // Database connection
 require_once "../admin/db.php";
-// phpinfo();
 if ($connection->connect_error) {
     die("Connection failed: " . $connection->connect_error);
 } else {
     echo "Database connection successful!<br>";
-    error_log("Database connection successful.");
 }
 
 // Check if form was submitted
@@ -22,18 +18,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Log the POST data
     echo "<script>alert('POST Data: " . json_encode($_POST) . "');</script>";
-
     echo "<script>alert('Username entered: " . $_POST['username'] . "');</script>";
     echo "<script>alert('Password entered.');</script>";
 
     $input_username = htmlspecialchars(trim($_POST['username']));
     $input_password = htmlspecialchars(trim($_POST['password']));
 
-    echo "Username: $input_username<br>";
-    echo "Password entered.<br>";
-
     echo "<script>alert('Username after sanitizing: $input_username');</script>";
-    echo "<script>alert('Password entered after sanitizing.');</script>";
+    echo "<script>alert('Password entered after sanitizing: $input_password');</script>";
 
     // Prepare a SQL statement to check the username
     $query = "SELECT * FROM users WHERE username = ?";
@@ -54,37 +46,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Check if a user with the provided username exists
     if ($result->num_rows === 1) {
-        echo "User found.<br>";
         echo "<script>alert('User found.');</script>";
-        $user = $result->fetch_assoc();
+        $user = $result->fetch_assoc(); // Fetch the user data from the database
+        
+        echo "<script>alert('Stored Password Hash: " . $user['password'] . "');</script>";
 
         // Verify the hashed password
         if (password_verify($input_password, $user['password'])) {
+            echo "<script>alert('Password verification successful!');</script>";
+
             // Credentials are valid, log the user in
             $_SESSION['loggedin'] = true;
             $_SESSION['username'] = $user['username'];
 
-            echo "Login successful!<br>";
             echo "<script>alert('Login successful!\\nSession Logged in: " . $_SESSION['loggedin'] . "\\nUsername: " . $_SESSION['username'] . "');</script>";
 
             header('Location: index.php'); // Redirect to admin area
             exit();
         } else {
             // Incorrect password
-            echo "Invalid password.<br>";
-            echo "<script>alert('Invalid password');</script>";
+            echo "<script>alert('Password verification failed. Invalid password.');</script>";
         }
     } else {
         // Username doesn't exist
-        echo "User not found.<br>";
         echo "<script>alert('User not found');</script>";
     }
 
     $stmt->close();
 }
 
-
-// Ensure output buffering is flushed and output is sent
 ob_end_flush();
 ?>
 
