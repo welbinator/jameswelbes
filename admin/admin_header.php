@@ -8,7 +8,8 @@ session_set_cookie_params([
     'samesite' => 'Strict' // Prevents sending cookies in cross-site requests
 ]);
 
-ini_set('session.save_path', '/tmp'); // Use /tmp or another writable directory
+// ini_set('session.save_path', __DIR__ . '/tmp'); 
+
 session_start();
 
 
@@ -19,13 +20,13 @@ ob_start();
 
 // Check if the user is logged in
 session_start();
-if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
-    header('Location: login.php');
-    exit();
-} else {
-    error_log("User is logged in: " . $_SESSION['username']);
-    // Proceed with the page content
-}
+// if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+//     header('Location: login.php');
+//     exit();
+// } else {
+//     error_log("User is logged in: " . $_SESSION['username']);
+   
+// }
 
 
 // Include database connection and functions
