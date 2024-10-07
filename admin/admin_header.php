@@ -1,6 +1,21 @@
 <?php
 // Start the session
 session_start();
+// Log session information to the error log
+error_log("Session ID: " . session_id()); // Log session ID
+
+// Log session variables to check if they're set correctly
+if (isset($_SESSION['loggedin'])) {
+    error_log("Session 'loggedin' value: " . ($_SESSION['loggedin'] ? 'true' : 'false'));
+} else {
+    error_log("Session 'loggedin' is not set.");
+}
+
+if (isset($_SESSION['username'])) {
+    error_log("Session 'username' value: " . $_SESSION['username']);
+} else {
+    error_log("Session 'username' is not set.");
+}
 
 
 
