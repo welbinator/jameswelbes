@@ -2,16 +2,6 @@
 // Include admin header
 require_once "admin_header.php";
 
-echo "<script>alert('Login successful!\\nSession Logged in: " . $_SESSION['loggedin'] . "\\nUsername: " . $_SESSION['username'] . "');</script>";
-
-// Check if the user is logged in and redirect if not
-if (!isset($_SESSION['loggedin']) ) {
-    header('Location: login.php');
-    exit();
-   
-} else {
-    header('Location: sites.php');
-}
 ?>
 
 <div id="wrapper">
