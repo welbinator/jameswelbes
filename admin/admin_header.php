@@ -6,13 +6,13 @@ session_start();
 
 
 
-if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
-    header('Location: login.php');
-    exit();
-} else {
-    error_log("User is logged in: " . $_SESSION['username']);
-    // Proceed with the page content
-}
+// if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+//     header('Location: login.php');
+//     exit();
+// } else {
+//     error_log("User is logged in: " . $_SESSION['username']);
+//     // Proceed with the page content
+// }
 
 
 // Include database connection and functions
