@@ -2,41 +2,7 @@
 session_start();
 ob_start(); // Start output buffering
 // Function to rehash a new password and update it in the database
-function update_password_for_user($connection, $username, $new_password) {
-    // Hash the new password
-    $hashed_password = password_hash($new_password, PASSWORD_BCRYPT);
 
-    // Prepare an SQL statement to update the user's password in the database
-    $query = "UPDATE users SET password = ? WHERE username = ?";
-    $stmt = $connection->prepare($query);
-
-    if (!$stmt) {
-        echo "<script>alert('Failed to prepare statement for updating password: " . $connection->error . "');</script>";
-        return false;
-    }
-
-    // Bind parameters and execute the statement
-    $stmt->bind_param('ss', $hashed_password, $username);
-    if ($stmt->execute()) {
-        echo "<script>alert('Password updated successfully for user: $username');</script>";
-        $stmt->close();
-        return true;
-    } else {
-        echo "<script>alert('Failed to update password: " . $stmt->error . "');</script>";
-        $stmt->close();
-        return false;
-    }
-}
-
-// Example usage: Update password for user 'james'
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Replace 'pepsidude' with the desired new password
-    $new_password = 'pepsidude';
-    $username = 'james'; // Replace with the correct username
-
-    // Call the function to update the password for the user
-    update_password_for_user($connection, $username, $new_password);
-}
 
 
 
