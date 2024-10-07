@@ -5,12 +5,12 @@ require_once "admin_header.php";
 echo $_SESSION;
 
 // Check if the user is logged in and redirect if not
-if (isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == 1) {
-   // Proceed with the page content
-} else {
-    
+if (!isset($_SESSION['loggedin']) ) {
     header('Location: login.php');
     exit();
+   
+} else {
+    header('Location: sites.php');
 }
 ?>
 
@@ -25,7 +25,7 @@ if (isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == 1) {
             <!-- Page Heading -->
             <div class="row">
                 <div class="col-lg-12">
-                    <?php echo $_SESSION['loggedin']; ?>
+                    
                     <h1 class="page-header">Posts</h1>
 
                     <table class="table table-bordered table-hover">
