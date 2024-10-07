@@ -5,12 +5,12 @@
 
 
 // Start output buffering
-// ob_start();
+ob_start();
 
 
 // Include database connection and functions
 require_once "../admin/db.php";
-require_once "functions.php";
+// require_once "functions.php";
 
 // Autoload classes from the vendor directory
 require '../vendor/autoload.php';
