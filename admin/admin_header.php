@@ -13,7 +13,7 @@ require_once "../admin/db.php";
 // require_once "functions.php";
 
 // Autoload classes from the vendor directory
-require '../vendor/autoload.php';
+// require '../vendor/autoload.php';
 
 // Set headers for security
 // header("Cache-Control: no-cache, no-store, must-revalidate"); // HTTP 1.1.
