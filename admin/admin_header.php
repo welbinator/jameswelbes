@@ -1,32 +1,11 @@
 <?php
-// session_set_cookie_params([
-//     'lifetime' => 0, // Session cookie lasts until the browser is closed
-//     'path' => '/',
-//     'domain' => 'jameswelbes.com', // Adjust to your actual domain
-//     'secure' => isset($_SERVER['HTTPS']), // Use secure cookies if HTTPS is enabled
-//     'httponly' => true, // Make cookie accessible only via HTTP (not JavaScript)
-//     'samesite' => 'Strict' // Prevents sending cookies in cross-site requests
-// ]);
 
-// ini_set('session.save_path', __DIR__ . '/tmp'); 
 
 session_start();
 
 
-
 // Start output buffering
 ob_start();
-
-
-// Check if the user is logged in
-
-// if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
-//     header('Location: login.php');
-//     exit();
-// } else {
-//     error_log("User is logged in: " . $_SESSION['username']);
-   
-// }
 
 
 // Include database connection and functions
