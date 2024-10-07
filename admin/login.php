@@ -3,7 +3,7 @@ session_start();
 ob_start(); // Start output buffering
 
 ini_set('display_errors', 1);
-
+echo phpversion();
 // Database connection
 require_once "../admin/db.php";
 if ($connection->connect_error) {
