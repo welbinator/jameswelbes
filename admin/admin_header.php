@@ -2,7 +2,7 @@
 session_set_cookie_params([
     'lifetime' => 0, // Session cookie lasts until the browser is closed
     'path' => '/',
-    'domain' => 'yourdomain.com', // Adjust to your actual domain
+    'domain' => 'jameswelbes.com', // Adjust to your actual domain
     'secure' => isset($_SERVER['HTTPS']), // Use secure cookies if HTTPS is enabled
     'httponly' => true, // Make cookie accessible only via HTTP (not JavaScript)
     'samesite' => 'Strict' // Prevents sending cookies in cross-site requests
