@@ -2,8 +2,7 @@
 // Start the session
 session_start();
 
-// Start output buffering
-ob_start();
+
 
 
 
@@ -30,6 +29,10 @@ header("Expires: 0"); // Proxies.
 header("X-Content-Type-Options: nosniff"); // Prevent MIME-based attacks.
 header("X-Frame-Options: SAMEORIGIN"); // Prevent clickjacking.
 header("Strict-Transport-Security: max-age=31536000; includeSubDomains; preload"); // Enforce HTTPS.
+
+
+// Start output buffering
+ob_start();
 ?>
 
 
