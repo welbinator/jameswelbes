@@ -26,7 +26,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     echo "<script>alert('User is logged in as: " . $_SESSION['username'] . "');</script>";
     // Proceed with the page content
 }
-
+echo phpversion();
 
 // Include database connection and functions
 require_once "../admin/db.php";
