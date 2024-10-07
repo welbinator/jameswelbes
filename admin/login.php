@@ -25,6 +25,9 @@ if ($connection->connect_error) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     echo "Form submitted.<br>";
     error_log("Form submitted.");
+    error_log(print_r($_POST, true)); // Log the POST data
+    error_log("Username entered: " . $_POST['username']);
+    error_log("Password entered.");
 
     $input_username = htmlspecialchars(trim($_POST['username']));
     $input_password = htmlspecialchars(trim($_POST['password']));
