@@ -1,6 +1,6 @@
-<?php
-// Start the session
-session_start();
+<?php session_start();
+
+
 // Log session information to the error log
 error_log("Session ID: " . session_id()); // Log session ID
 
@@ -21,13 +21,13 @@ if (isset($_SESSION['username'])) {
 
 
 
-// if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
-//     header('Location: login.php');
-//     exit();
-// } else {
-//     error_log("User is logged in: " . $_SESSION['username']);
-//     // Proceed with the page content
-// }
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+    header('Location: login.php');
+    exit();
+} else {
+    error_log("User is logged in: " . $_SESSION['username']);
+    // Proceed with the page content
+}
 
 
 // Include database connection and functions

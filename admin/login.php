@@ -1,15 +1,10 @@
-<?php
-session_start(); // Ensure this is at the very top
+<?php session_start();
+
 ob_start(); // Start output buffering
 
-// ini_set('log_errors', 1);
-// ini_set('error_log', '../admin/php-error.log'); 
-// ini_set('error_log', '/opt/lampp/htdocs/jameswelbes/admin/php-error.log');
+
 ini_set('display_errors', 1);
-// error_reporting(E_ALL);
 
-
-// echo $undefined_variable;
 
 // Database connection
 require_once "../admin/db.php";
