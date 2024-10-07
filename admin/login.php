@@ -1,9 +1,10 @@
 <?php
 session_start();
 ob_start(); // Start output buffering
+$hashed_password = password_hash('pepsidude', PASSWORD_BCRYPT);
 
 ini_set('display_errors', 1);
-echo phpversion();
+
 // Database connection
 require_once "../admin/db.php";
 if ($connection->connect_error) {
