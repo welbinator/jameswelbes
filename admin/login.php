@@ -8,11 +8,11 @@ ini_set('display_errors', 1);
 // error_reporting(E_ALL);
 
 session_start(); // Ensure this is at the very top
-echo $undefined_variablee;
+// echo $undefined_variable;
 
 // Database connection
 require_once "../admin/db.php";
-phpinfo();
+// phpinfo();
 if ($connection->connect_error) {
     die("Connection failed: " . $connection->connect_error);
 } else {
