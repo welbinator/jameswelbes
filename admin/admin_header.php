@@ -1,31 +1,29 @@
 <?php session_start();
 
-
-// Log session information to the error log
-error_log("Session ID: " . session_id()); // Log session ID
+// Log session information using alerts
+echo "<script>alert('Session ID: " . session_id() . "');</script>"; // Log session ID
 
 // Log session variables to check if they're set correctly
 if (isset($_SESSION['loggedin'])) {
-    error_log("Session 'loggedin' value: " . ($_SESSION['loggedin'] ? 'true' : 'false'));
+    $loggedInStatus = $_SESSION['loggedin'] ? 'true' : 'false';
+    echo "<script>alert('Session \"loggedin\" value: " . $loggedInStatus . "');</script>";
 } else {
-    error_log("Session 'loggedin' is not set.");
+    echo "<script>alert('Session \"loggedin\" is not set.');</script>";
 }
 
 if (isset($_SESSION['username'])) {
-    error_log("Session 'username' value: " . $_SESSION['username']);
+    echo "<script>alert('Session \"username\" value: " . $_SESSION['username'] . "');</script>";
 } else {
-    error_log("Session 'username' is not set.");
+    echo "<script>alert('Session \"username\" is not set.');</script>";
 }
 
-
-
-
-
+// Check if the user is logged in and redirect if not
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+    echo "<script>alert('User is not logged in. Redirecting to login.');</script>";
     header('Location: login.php');
     exit();
 } else {
-    error_log("User is logged in: " . $_SESSION['username']);
+    echo "<script>alert('User is logged in as: " . $_SESSION['username'] . "');</script>";
     // Proceed with the page content
 }
 
