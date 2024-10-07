@@ -1,27 +1,32 @@
 <?php
-
-
-// session_start();
-
+// Start the session
+session_start();
 
 // Start output buffering
 ob_start();
 
 
+// Check if the user is logged in
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+    // If the user is not logged in, redirect to the login page
+    header('Location: login.php');
+    exit();
+}
+
 // Include database connection and functions
 require_once "../admin/db.php";
-// require_once "functions.php";
+require_once "functions.php";
 
 // Autoload classes from the vendor directory
 // require '../vendor/autoload.php';
 
 // Set headers for security
-// header("Cache-Control: no-cache, no-store, must-revalidate"); // HTTP 1.1.
-// header("Pragma: no-cache"); // HTTP 1.0.
-// header("Expires: 0"); // Proxies.
-// header("X-Content-Type-Options: nosniff"); // Prevent MIME-based attacks.
-// header("X-Frame-Options: SAMEORIGIN"); // Prevent clickjacking.
-// header("Strict-Transport-Security: max-age=31536000; includeSubDomains; preload"); // Enforce HTTPS.
+header("Cache-Control: no-cache, no-store, must-revalidate"); // HTTP 1.1.
+header("Pragma: no-cache"); // HTTP 1.0.
+header("Expires: 0"); // Proxies.
+header("X-Content-Type-Options: nosniff"); // Prevent MIME-based attacks.
+header("X-Frame-Options: SAMEORIGIN"); // Prevent clickjacking.
+header("Strict-Transport-Security: max-age=31536000; includeSubDomains; preload"); // Enforce HTTPS.
 ?>
 
 
