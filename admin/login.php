@@ -1,6 +1,9 @@
 <?php
+ini_set('session.save_path', '/tmp');
 session_start();
 ob_start(); // Start output buffering
+
+phpinfo();
 
 ini_set('display_errors', 1);
 

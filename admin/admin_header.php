@@ -1,4 +1,6 @@
-<?php session_start();
+<?php 
+ini_set('session.save_path', '/tmp');
+session_start();
 
 
 // Include database connection and functions
