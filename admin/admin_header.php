@@ -1,18 +1,32 @@
 <?php
-// Start the session
+session_set_cookie_params([
+    'lifetime' => 0, // Session cookie lasts until the browser is closed
+    'path' => '/',
+    'domain' => 'yourdomain.com', // Adjust to your actual domain
+    'secure' => isset($_SERVER['HTTPS']), // Use secure cookies if HTTPS is enabled
+    'httponly' => true, // Make cookie accessible only via HTTP (not JavaScript)
+    'samesite' => 'Strict' // Prevents sending cookies in cross-site requests
+]);
+
+ini_set('session.save_path', '/tmp'); // Use /tmp or another writable directory
 session_start();
+
+
 
 // Start output buffering
 ob_start();
 
 
-
 // Check if the user is logged in
+session_start();
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
-    // If the user is not logged in, redirect to the login page
     header('Location: login.php');
     exit();
+} else {
+    error_log("User is logged in: " . $_SESSION['username']);
+    // Proceed with the page content
 }
+
 
 // Include database connection and functions
 require_once "../admin/db.php";
