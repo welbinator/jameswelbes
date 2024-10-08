@@ -62,7 +62,7 @@ if (isset($_POST['create_post'])) {
 <!-- HTML Form for adding a new post -->
 <form action="" method="post" enctype="multipart/form-data">
     <!-- CSRF token (Uncomment the following line if using CSRF protection) -->
-    <!-- <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars(generate_csrf_token()); ?>"> -->
+    <!-- <input type="hidden" name="csrf_token" value="<?php // echo htmlspecialchars(generate_csrf_token()); ?>"> -->
 
     <div class="form-group">
         <label for="title">Post Title</label>
