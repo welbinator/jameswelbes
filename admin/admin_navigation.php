@@ -7,12 +7,12 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="index.php">CMS Admin</a>
+        <a class="navbar-brand" href="index">CMS Admin</a>
     </div>
     
     <!-- Top Menu Items -->
     <ul class="nav navbar-right top-nav">
-        <li><a href="../index.php">Home Page</a></li>
+        <li><a href="../index">Home Page</a></li>
         <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                 <i class="fa fa-user"></i> John Smith <b class="caret"></b>
@@ -33,7 +33,7 @@
     <div class="collapse navbar-collapse navbar-ex1-collapse">
         <ul class="nav navbar-nav side-nav">
             <li>
-                <a href="index.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                <a href="index"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
             </li>
             
             <!-- Sites Dropdown -->
