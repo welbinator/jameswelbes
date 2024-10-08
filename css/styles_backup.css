@@ -131,7 +131,7 @@
     border: none;
     color: white;
 }
-.home #stuffs {
+.home #things {
   display: flex;
   opacity: 1;
 }
@@ -272,7 +272,7 @@ div.fade {
 #justSpan {
   transition: 2s opacity;
 }
-#stuffs {
+#things {
     display: none;
     opacity: 0;
     transition: 3s opacity;
@@ -308,17 +308,17 @@ div.fade {
 }
 
 
-.stuffs-inner img {
+.things-inner img {
     height: 100px!important;
   width: auto!important;
     
 }
 
-.stuffs-inner .heading {
+.things-inner .heading {
   font-size: 25px;
 }
 
-.stuffs-inner .meta {
+.things-inner .meta {
   font-size: 18px!important;
 }
 
@@ -1113,7 +1113,7 @@ h1, h2, h3, h4, h5,
      
 
 @media (max-width: 830px) {
-/*   #stuffs {
+/*   #things {
     display: none;
     opacity: 0;
     transition: 2s opacity;
@@ -1142,7 +1142,7 @@ h1, h2, h3, h4, h5,
   }
 } */
 @media screen and (max-width: 640px) {
-  #stuffs {
+  #things {
     width: 100%;
   }
   .card {

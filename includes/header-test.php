@@ -43,7 +43,7 @@
 
  <header id="header" class="header-bar d-flex d-lg-block align-items-center aos-init aos-animate" data-aos="fade-left">
     <div class="site-logo">
-      <a href="index.php"><img src="images/profilesticker.png" width="150" height="auto"></a>
+      <a href="index"><img src="images/profilesticker.png" width="150" height="auto"></a>
     </div>
     
     <div class="d-inline-block mobile-menu-icon ml-md-0 ml-auto py-3" style="position: relative; top: 3px;"><a href="#" class="site-menu-toggle js-menu-toggle text-white"><span class="icon-menu h3"></span></a></div>

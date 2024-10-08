@@ -13,7 +13,7 @@ require_once "admin_header.php";
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">
-                        Stuffs
+                        Things
                     </h1>
 
                     <?php
@@ -22,14 +22,14 @@ require_once "admin_header.php";
 
                     // Switch statement to load different pages based on 'source' parameter
                     switch ($source) {
-                        case 'add_stuffs':
-                            require_once "includes/add_stuffs.php";
+                        case 'add_things':
+                            require_once "includes/add_things.php";
                             break;
-                        case 'edit_stuffs':
-                            require_once "includes/edit_stuffs.php";
+                        case 'edit_things':
+                            require_once "includes/edit_things.php";
                             break;
                         default:
-                            require_once "includes/view_all_stuffs.php";
+                            require_once "includes/view_all_things.php";
                             break;
                     }
                     ?>
