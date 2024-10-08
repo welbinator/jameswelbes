@@ -11,8 +11,8 @@ console.log("hello");
 document.getElementById('header').classList.add('fadeInFromLeft');
 document.getElementById('site-logo').classList.add('rotate-center');
 document.getElementById('indexH2').classList.add('fadeInFromTop');
-document.getElementById('stuffs').classList.add('growFromMiddle');
-document.getElementById('stuffs').style.display = 'flex';
+document.getElementById('things').classList.add('growFromMiddle');
+document.getElementById('things').style.display = 'flex';
 // document.getElementById('skip').style.display = 'none';
 setTimeout(redirectHome, three);
 

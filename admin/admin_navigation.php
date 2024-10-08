@@ -66,17 +66,17 @@
                 </ul>
             </li>
 
-            <!-- Stuffs Dropdown -->
+            <!-- Things Dropdown -->
             <li>
-                <a href="javascript:;" data-toggle="collapse" data-target="#stuffs_dropdown" aria-expanded="false">
-                    <i class="fa fa-fw fa-arrows-v"></i> Stuffs <i class="fa fa-fw fa-caret-down"></i>
+                <a href="javascript:;" data-toggle="collapse" data-target="#things_dropdown" aria-expanded="false">
+                    <i class="fa fa-fw fa-arrows-v"></i> Things <i class="fa fa-fw fa-caret-down"></i>
                 </a>
-                <ul id="stuffs_dropdown" class="collapse">
+                <ul id="things_dropdown" class="collapse">
                     <li>
-                        <a href="./stuffs.php">View Stuffs</a>
+                        <a href="./things.php">View Things</a>
                     </li>
                     <li>
-                        <a href="stuffs.php?source=add_stuffs">Add Stuffs</a>
+                        <a href="things.php?source=add_things">Add Things</a>
                     </li>
                 </ul>
             </li>
