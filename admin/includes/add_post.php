@@ -1,11 +1,9 @@
 <?php
-// Assuming CSRF protection and database connection are initialized in the file that includes this script.
+
+
 
 if (isset($_POST['create_post'])) {
-    // CSRF token validation (uncomment if using CSRF protection)
-    // if (!check_csrf_token($_POST['csrf_token'])) {
-    //     die("Invalid CSRF token.");
-    // }
+    
 
     // HTML Purifier configuration to sanitize post content
     $config = HTMLPurifier_Config::createDefault();
@@ -15,7 +13,8 @@ if (isset($_POST['create_post'])) {
     $post_title = strip_tags($_POST['title']); // Strip HTML tags, allowing only plain text
     $post_category_id = filter_input(INPUT_POST, 'post_category', FILTER_VALIDATE_INT); // Validate category ID as integer
     $post_status = strip_tags($_POST['post_status']); // Strip HTML tags for status
-    $post_content = $purifier->purify($_POST['post_content']); // Purify post content to allow safe HTML
+    // $post_content = $purifier->purify($_POST['post_content']); // Purify post content to allow safe HTML
+    $post_content = $purifier->purify("Post Content");
     $post_desc = strip_tags($_POST['desc']); // Strip HTML tags from description
 
     // File upload settings
@@ -32,24 +31,33 @@ if (isset($_POST['create_post'])) {
             // Move the uploaded file to the destination directory
             if (move_uploaded_file($_FILES['image']['tmp_name'], $uploadFile)) {
                 // Insert post into the database using prepared statements
-                $query = "INSERT INTO posts (post_category_id, post_title, post_date, post_image, post_content, post_status, post_desc) VALUES (?, ?, NOW(), ?, ?, ?, ?)";
+                $query = "INSERT INTO posts (post_category_id, post_title, post_date, post_image, post_status, post_content, post_desc) VALUES (?, ?, NOW(), ?, ?, ?, ?)";
                 $stmt = $connection->prepare($query);
-                $stmt->bind_param("isssss", $post_category_id, $post_title, $post_image, $post_content, $post_status, $post_desc);
-                $stmt->execute();
-
-                // Check for errors
-                if ($stmt->error) {
-                    echo "<p class='bg-danger'>Error: " . htmlspecialchars($stmt->error) . "</p>";
-                } else {
+            
+                if (!$stmt) {
+                    die("Prepare failed: (" . $connection->errno . ") " . $connection->error);
+                }
+            
+                
+                $stmt->bind_param("isssss", $post_category_id, $post_title, $post_image, $post_status, $post_content, $post_desc);
+            
+                if (!$stmt->execute()) {
+                    die("Execute failed: (" . $stmt->errno . ") " . $stmt->error);
+                }
+            
+                if ($stmt->affected_rows > 0) {
                     $the_post_id = $stmt->insert_id;
                     echo "<p class='bg-success'>Post Created. <a href='../post.php?p_id=" . htmlspecialchars($the_post_id) . "'>View Post</a> or <a href='posts.php'>Edit More Posts</a>.</p>";
+                } else {
+                    echo "<p class='bg-danger'>No rows affected. Post was not created.</p>";
                 }
-
-                // Close the statement
+            
                 $stmt->close();
             } else {
                 echo "<p class='bg-danger'>File upload failed.</p>";
             }
+            
+            
         } else {
             echo "<p class='bg-danger'>Invalid file type or file too large. Only JPEG, PNG, and GIF files under 5MB are allowed.</p>";
         }
@@ -60,9 +68,8 @@ if (isset($_POST['create_post'])) {
 ?>
 
 <!-- HTML Form for adding a new post -->
-<form action="" method="post" enctype="multipart/form-data">
-    <!-- CSRF token (Uncomment the following line if using CSRF protection) -->
-    <!-- <input type="hidden" name="csrf_token" value="<?php // echo htmlspecialchars(generate_csrf_token()); ?>"> -->
+<form action="posts.php?source=add_post" method="post" enctype="multipart/form-data">
+   
 
     <div class="form-group">
         <label for="title">Post Title</label>
@@ -97,10 +104,10 @@ if (isset($_POST['create_post'])) {
         <input type="file" class="form-control" name="image" accept=".jpg,.jpeg,.png,.gif">
     </div>
 
-    <div class="form-group">
+    <!-- <div class="form-group">
         <label for="post_content">Post Content</label>
         <textarea class="form-control textarea-editor" name="post_content" cols="30" rows="10" required></textarea>
-    </div>
+    </div> -->
 
     <div class="form-group">
         <label for="desc">Post Description</label>
@@ -108,6 +115,6 @@ if (isset($_POST['create_post'])) {
     </div>
 
     <div class="form-group">
-        <input type="submit" class="btn btn-primary" name="create_post" value="Publish Post">
+        <input type="submit" class="btn btn-primary" name="create_post" value="Create Post">
     </div>
 </form>
