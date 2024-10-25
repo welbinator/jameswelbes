@@ -7,8 +7,6 @@
 <!-- Bootstrap Core JavaScript -->
 <script src="js/bootstrap.min.js" defer></script>
 
-
-
 <script>
     // Initialize TinyMCE editor
     tinymce.init({
