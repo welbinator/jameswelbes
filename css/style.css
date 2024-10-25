@@ -259,15 +259,15 @@ div.fade {
 }
 
 .btn {
-  color: #000;
+  color: #fff;
   font-weight: bold;
-  background-color: #fff;
-  transition: 1s background-color;
+  background-color: #0000ff;
+  transition: all 1s; 
 }
 
 .btn:hover {
-  background-color: blue;
-  color: #fff;
+  background-color: #fff;
+  color: #000;
   
 }
 
