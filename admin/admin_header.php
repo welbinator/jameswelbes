@@ -1,4 +1,7 @@
+<!DOCTYPE html>
+<html lang="en">
 <?php 
+ob_start();
 ini_set('session.save_path', '/tmp');
 session_start();
 
@@ -16,16 +19,7 @@ header("Expires: 0"); // Proxies.
 header("X-Content-Type-Options: nosniff"); // Prevent MIME-based attacks.
 header("X-Frame-Options: SAMEORIGIN"); // Prevent clickjacking.
 header("Strict-Transport-Security: max-age=31536000; includeSubDomains; preload"); // Enforce HTTPS.
-
-
-// Start output buffering
-ob_start();
-?>
-
-
-<!DOCTYPE html>
-<html lang="en">
-
+?> 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -41,7 +35,9 @@ ob_start();
     <!-- <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
 
     <!-- TinyMCE Script -->
-    <script src="https://cdn.tiny.cloud/1/7oc6yxpf300lo0d20iaoihqvz41lla6ceg6igx6r6vu6h3vj/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://cdn.tiny.cloud/1/7oc6yxpf300lo0d20iaoihqvz41lla6ceg6igx6r6vu6h3vj/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+
+
 </head>
 
 <body>

@@ -7,15 +7,6 @@
 <!-- Bootstrap Core JavaScript -->
 <script src="js/bootstrap.min.js" defer></script>
 
-<script>
-    // Initialize TinyMCE editor
-    tinymce.init({
-        selector: 'textarea',
-        plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak',
-        toolbar_mode: 'floating',
-    });
-</script>
-
 <!-- Custom CKEditor (if needed) -->
 <!-- If CKEditor is required, uncomment the following lines -->
 <!--

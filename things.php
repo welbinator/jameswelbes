@@ -1,19 +1,24 @@
 <div id="things">
   <?php
-    // Query to fetch all 'things' from the database
-    $query = "SELECT * FROM things";
+    // Query to fetch all 'things' from the database, ordered by most recent
+    $query = "SELECT * FROM things ORDER BY things_id DESC"; // Replace 'id' with 'created_at' if available and applicable
     $select_all_things_query = mysqli_query($connection, $query);
+
+    // Check for query errors
+    if (!$select_all_things_query) {
+        die("Database query failed: " . mysqli_error($connection));
+    }
 
     // Loop through each 'things' entry and display it
     while ($row = mysqli_fetch_assoc($select_all_things_query)) {
-        // Sanitize output to prevent XSS
-        $things_title = htmlspecialchars($row['things_title'], ENT_QUOTES, 'UTF-8');
-        $things_tagline = htmlspecialchars($row['things_tagline'], ENT_QUOTES, 'UTF-8');
-        $things_image = htmlspecialchars($row['things_image'], ENT_QUOTES, 'UTF-8');
-        $things_id = htmlspecialchars($row['things_id'], ENT_QUOTES, 'UTF-8');
-        $things_permalink = htmlspecialchars($row['things_permalink'], ENT_QUOTES, 'UTF-8');
-        $things_desc = htmlspecialchars($row['things_desc'], ENT_QUOTES, 'UTF-8');
-        $things_link = htmlspecialchars($row['things_link'], ENT_QUOTES, 'UTF-8');
+        // Sanitize and decode output to prevent XSS and display properly
+        $things_title = htmlspecialchars_decode(stripslashes($row['things_title']), ENT_QUOTES);
+        $things_tagline = htmlspecialchars_decode(stripslashes($row['things_tagline']), ENT_QUOTES);
+        $things_image = htmlspecialchars_decode(stripslashes($row['things_image']), ENT_QUOTES);
+        $things_id = htmlspecialchars_decode(stripslashes($row['things_id']), ENT_QUOTES);
+        $things_permalink = htmlspecialchars_decode(stripslashes($row['things_permalink']), ENT_QUOTES);
+        $things_desc = htmlspecialchars_decode(stripslashes($row['things_desc']), ENT_QUOTES);
+        $things_link = htmlspecialchars_decode(stripslashes($row['things_link']), ENT_QUOTES);
   ?>
   
     <!-- Display each 'things' entry in a card -->

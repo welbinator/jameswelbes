@@ -1,10 +1,11 @@
 <?php
 if (isset($_POST['add_things'])) {
-    // Sanitize input data
-    $things_title = htmlspecialchars(trim($_POST['things_title']), ENT_QUOTES, 'UTF-8');
-    $things_permalink = htmlspecialchars(trim($_POST['things_permalink']), ENT_QUOTES, 'UTF-8');
-    $things_tagline = htmlspecialchars(trim($_POST['things_tagline']), ENT_QUOTES, 'UTF-8');
-    $things_desc = htmlspecialchars(trim($_POST['things_desc']), ENT_QUOTES, 'UTF-8');
+    // Sanitize input data for database insertion
+    $things_title = mysqli_real_escape_string($connection, trim($_POST['things_title']));
+    $things_permalink = filter_var(trim($_POST['things_permalink']), FILTER_SANITIZE_URL);
+    $things_tagline = mysqli_real_escape_string($connection, trim($_POST['things_tagline']));
+    $things_desc = mysqli_real_escape_string($connection, trim($_POST['things_desc']));
+    $things_link = filter_var(trim($_POST['things_link']), FILTER_SANITIZE_URL);
 
     // Handle file upload
     $allowed_types = ['image/jpeg', 'image/png', 'image/gif'];
@@ -24,10 +25,14 @@ if (isset($_POST['add_things'])) {
                 $destination_url = "../images/index/thumbnails/$things_image";
                 compress_image($src_url, $destination_url, 60);
 
+                if (!$connection) {
+                    die("Database connection failed: " . mysqli_connect_error());
+                }
+
                 // Insert data using prepared statements
-                $query = "INSERT INTO things (things_title, things_permalink, things_image, things_tagline, things_desc) VALUES (?, ?, ?, ?, ?)";
+                $query = "INSERT INTO things (things_title, things_permalink, things_image, things_tagline, things_desc, things_link) VALUES (?, ?, ?, ?, ?, ?)";
                 if ($stmt = $connection->prepare($query)) {
-                    $stmt->bind_param("sssss", $things_title, $things_permalink, $things_image, $things_tagline, $things_desc);
+                    $stmt->bind_param("ssssss", $things_title, $things_permalink, $things_image, $things_tagline, $things_desc, $things_link);
                     $stmt->execute();
 
                     if ($stmt->error) {
@@ -70,8 +75,13 @@ if (isset($_POST['add_things'])) {
     </div>
 
     <div class="form-group">
+        <label for="things_link">URL</label>
+        <input type="url" class="form-control" name="things_link" required>
+    </div>
+
+    <div class="form-group">
         <label for="things_desc">Description</label>
-        <textarea class="form-control" name="things_desc" cols="30" rows="10" required></textarea>
+        <textarea class="form-control" name="things_desc" cols="30" rows="10"></textarea>
     </div>
 
     <div class="form-group">
