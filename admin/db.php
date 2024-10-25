@@ -12,13 +12,13 @@ $dbConfigs = [
         'db_name' => 'jameswel_8js8dj98d',
         'db_user' => 'jameswelbes_portfolio',
         'db_pass' => 'h~Sv+0J9&HNN',
-        'db_host' => 'localhost',
+        'db_host' => 'database',
     ]
 ];
 
 // Toggle between 'prodDB' and 'devDB' based on your current environment
 // This line will be modified by your readyForDev or readyForProd scripts
-$currentDbConfig = $dbConfigs['devDB']; // Default to devDB
+$currentDbConfig = $dbConfigs['prodDB']; // Default to devDB
 
 // Extracting the selected database configuration
 extract($currentDbConfig);

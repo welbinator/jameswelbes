@@ -1,0 +1,17 @@
+name: james-welbes
+recipe: lamp
+config:
+  php: '8.0'
+  composer_version: '2.2.12'
+  webroot: .
+  database: mysql:5.7
+services:
+  mydb:
+    type: 'mysql:5.7'
+    ports:
+      - '3306'
+  pma:
+    ssl: true
+    type: phpmyadmin
+    hosts:
+      - james-welbes-pma.lndo.site
