@@ -9,7 +9,7 @@ require_once "includes/header.php";
   <div class="row align-items-stretch">
     <?php
     // Use prepared statements to avoid SQL injection
-    $query = "SELECT portfolio_title, portfolio_tagline, portfolio_image, portfolio_id FROM portfolio";
+    $query = "SELECT portfolio_title, portfolio_tagline, portfolio_image, portfolio_id FROM portfolio ORDER BY portfolio_id DESC";
     
     // Prepare the statement
     if ($stmt = $connection->prepare($query)) {
