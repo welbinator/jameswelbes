@@ -12,3 +12,8 @@ RewriteRule ^(.*)$ $1.php [L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ /jameswelbes/$1.php [L]
+
+<Files "db.php">
+    Order Allow,Deny
+    Deny from all
+</Files>
