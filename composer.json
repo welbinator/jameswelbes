@@ -10,7 +10,7 @@
         "ezyang/htmlpurifier": "^4.17"
     },
     "scripts": {
-        "readyForDev": "php readyForDev.php",
-        "readyForProd": "php readyForProd.php"
+        "dev": "php readyForDev.php",
+        "prod": "php readyForProd.php"
     }
 }
