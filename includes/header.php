@@ -1,6 +1,6 @@
 <?php
 // Include necessary files
-require_once "admin/db.php";
+require_once "db.php";
 require_once "functions.php";
 ?>
 

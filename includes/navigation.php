@@ -1,6 +1,6 @@
 <div class="main-menu">
       <ul id="main-nav" class="js-clone-nav">
-        <li><a href="home">Home</a></li>
+        <li><a href="/">Home</a></li>
         
         <li><a href="bio">Bio</a></li>
         
