@@ -8,4 +8,5 @@
 <link rel="stylesheet" href="css/fancybox.min.css">
 <link rel="stylesheet" href="css/animista.css">
 <link rel="stylesheet" href="css/keyframes.css">
+<link rel="stylesheet" href="fonts/icomoon/style.min.css">
 <link rel="stylesheet" href="css/style.css">
