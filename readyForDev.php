@@ -1,6 +1,22 @@
 <?php
 
 /*
+* Rename .htaccess to .htaccess.bak for backup
+*/
+$htaccessPath = __DIR__ . '/.htaccess';
+$backupPath = __DIR__ . '/.htaccess.bak';
+
+if (file_exists($htaccessPath)) {
+    if (rename($htaccessPath, $backupPath)) {
+        echo ".htaccess has been renamed to .htaccess.bak.\n";
+    } else {
+        echo "Failed to rename .htaccess.\n";
+    }
+} else {
+    echo ".htaccess file does not exist.\n";
+}
+
+/*
 * Update navigation for development
 */
 $filePath = __DIR__ . '/includes/navigation.php';
