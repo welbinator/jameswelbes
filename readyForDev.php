@@ -45,7 +45,7 @@ file_put_contents($filePath, $fileContent);
 */
 
 // Define the path to the db.php file
-$dbFilePath = __DIR__ . 'db.php';
+$dbFilePath = __DIR__ . '/db.php';
 
 // Read the content of the db.php file
 $content = file_get_contents($dbFilePath);
