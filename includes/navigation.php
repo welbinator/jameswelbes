@@ -9,6 +9,8 @@
         <li><a href="webdesign">Web Design</a></li>
         
         <li><a href="blog">Blog</a></li>
+        
+        <li><a href="resume.php">Resume</a></li>
       </ul>
      
   

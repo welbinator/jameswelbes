@@ -74,6 +74,11 @@
     color: black!important;
 }
 
+#main-nav {
+  position: relative;
+  height: 500px;
+}
+
 #main-nav li {
     font-size: 20px;
     transition: .5s all ease;
@@ -97,37 +102,37 @@
 }
 
 #main-nav li:nth-child(1) {
-    top: 28%;
+    top: 0%;
   transform: skew(10deg, 10deg);
 }
 
 #main-nav li:nth-child(2) {
-    top: 34%;
+    top: 11%;
   transform: skew(10deg, 1deg);
 }
 
 #main-nav li:nth-child(3) {
-    top: 39%;
+    top: 20%;
   transform: skew(-10deg, -10deg);
 }
 
 #main-nav li:nth-child(4) {
-    top: 46%;
+    top: 32%;
   transform: skew(20deg, -6deg);
 }
 #main-nav li:nth-child(5) {
-    top: 53%;
+    top: 45%;
     transform: skew(10deg, 10deg);
+}
+#main-nav li:nth-child(6) {
+  top: 57%;
+  transform: skew(10deg, 1deg);
 }
 
 .social {
   position: absolute;
-  top: 64%;
+  top: 72%;
 }
-
-
-
-
 
 
 #skip {
@@ -469,10 +474,73 @@ h1, h2, h3, h4, h5,
 .site-section {
   padding: 2.5em 0; }
 
+/* Container and Wrapper */
+.resume-container {
+  /* min-height: 100vh;
+  background-color: #f3f4f6;
+  padding: 3rem 1rem; */
+}
 
+.resume-wrapper {
+  max-width: 64rem;
+  margin: 0 auto;
+}
 
+/* Title */
+.resume-title {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 2rem;
+}
 
+/* Card */
+.resume-card {
+  /* background-color: #ffffff; */
+  border-radius: 0.5rem;
+  box-shadow: 0px 0px 11px #ffffff38;
+  margin-bottom: 1.5rem;
+  padding: 1.5rem;
+}
 
+.resume-card-header {
+  margin-bottom: 1rem;
+}
+
+.resume-card-title {
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+  text-align: left;
+}
+
+.resume-card-date {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+/* Card Content */
+.resume-card-content {
+  padding-left: 1.25rem;
+}
+
+.resume-card-list {
+  list-style-type: disc;
+  margin-top: 0.5rem;
+}
+
+.resume-card-list li {
+  margin-bottom: 0.25rem;
+}
+
+.resume-rule {
+  margin-bottom: 2rem;
+  border: 0;
+  border-top: 1px solid rgb(255 255 255);
+  width: 105px;
+}
+
+/** Mobile Stuff **/
 
 @media  (min-width: 992px) {
 
