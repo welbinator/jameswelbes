@@ -53,9 +53,9 @@ require_once "includes/header.php";
           </div>
           <div class="resume-card-content">
             <ul class="resume-card-list">
-              <li>Provider of internet consulting experience for small and medium businesses in the Cedar Rapids, Iowa area.</li>
-              <li>Focus on website creation and maintenance, leveraging CMS platforms (WordPress, WebFlow) where applicable and creation/modification of HTML & CSS code when required.</li>
-              <li>Manage basic SEO optimization and small AdWords campaigns for customers.</li>
+              <li>Provide consulting for small and medium businesses in the Cedar Rapids, Iowa area.</li>
+              <li>Focus on website creation and maintenance, leveraging WordPress and creation/modification of HTML & CSS code when required.</li>
+              <li>Manage basic SEO optimization for customers.</li>
               <li>Other common services include onboarding customers to G Suite or Office 365, website configuration (SSL), and Webhosting.</li>
             </ul>
           </div>
