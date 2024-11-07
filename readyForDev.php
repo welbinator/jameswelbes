@@ -31,6 +31,7 @@ $searchReplacePairs = [
     '<a href="contact">' => '<a href="contact.php">',
     '<a href="webdesign">' => '<a href="webdesign.php">',
     '<a href="blog">' => '<a href="blog.php">',
+    '<a href="resume">' => '<a href="resume.php">',
 ];
 
 foreach ($searchReplacePairs as $search => $replace) {
