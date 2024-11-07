@@ -10,7 +10,7 @@
         
         <li><a href="blog">Blog</a></li>
         
-        <li><a href="resume.php">Resume</a></li>
+        <li><a href="resume">Resume</a></li>
       </ul>
      
   
