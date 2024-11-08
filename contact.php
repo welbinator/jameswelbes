@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['csrf_token']) && hash
           try {
               // Setup PHPMailer
               $mail = new PHPMailer(true);
-              $mail->SMTPDebug = 2;
+              // $mail->SMTPDebug = 2;
               $mail->SMTPOptions = [
                 'ssl' => [
                     'verify_peer' => false,
@@ -54,16 +54,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['csrf_token']) && hash
               $mail->isSMTP();
               $mail->SMTPAuth = true;
               $mail->SMTPSecure = 'tls';
-              $mail->Host = getenv('MAIL_HOST');
-              var_dump(getenv('MAIL_HOST')); // Should output "smtp-relay.brevo.com"
-
+              $mail->Host = 'smtp-relay.brevo.com';
               $mail->Port = 587;
               $mail->isHTML(true);
-              $mail->Username = getenv('MAIL_USERNAME');
-              $mail->Password = getenv('MAIL_PASSWORD');
-              echo 'MAIL_FROM: ' . getenv('MAIL_FROM');
-
-              $mail->setFrom(getenv('MAIL_FROM'), getenv('MAIL_FROM_NAME'));
+              $mail->Username = 'james.welbes@gmail.com';
+              $mail->Password = 'fnYJbNwtv3E5MFZS';
+              $mail->setFrom('james@apexbranding.design');
 
               $mail->Subject = $post_subject;
               $mail->Body = "<h3>From: $post_name</h3><br><p>Email: $post_from</p><br>$post_body";
