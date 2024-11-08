@@ -119,32 +119,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['csrf_token']) && hash
                 <div class="row form-group">
                   <div class="col-md-6 mb-3 mb-md-0">
                     <label class="text-white" for="fname">First Name</label>
-                    <input type="text" name="name" id="fname" class="form-control" required value="James">
+                    <input type="text" name="name" id="fname" class="form-control" required>
                   </div>
                   <div class="col-md-6">
                     <label class="text-white" for="lname">Last Name</label>
-                    <input type="text" name="lname" id="lname" class="form-control" value="Welbes">
+                    <input type="text" name="lname" id="lname" class="form-control">
                   </div>
                 </div>
 
                 <div class="row form-group">
                   <div class="col-md-12">
                     <label class="text-white" for="email">Email</label>
-                    <input type="email" name="from" id="email" class="form-control" required value="james.welbes@gmail.com">
+                    <input type="email" name="from" id="email" class="form-control" required>
                   </div>
                 </div>
 
                 <div class="row form-group">
                   <div class="col-md-12">
                     <label class="text-white" for="subject">Subject</label>
-                    <input type="text" name="subject" id="subject" class="form-control" required value="test">
+                    <input type="text" name="subject" id="subject" class="form-control">
                   </div>
                 </div>
 
                 <div class="row form-group mb-5">
                   <div class="col-md-12">
                     <label class="text-white" for="message">Message</label>
-                    <textarea name="message" id="message" cols="30" rows="7" class="form-control" required placeholder="Write your notes or questions here...">Test</textarea>
+                    <textarea name="message" id="message" cols="30" rows="7" class="form-control" required placeholder="Write your notes or questions here..."></textarea>
                   </div>
                 </div>
 
