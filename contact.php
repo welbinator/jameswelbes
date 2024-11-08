@@ -59,6 +59,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['csrf_token']) && hash
               $mail->isHTML(true);
               $mail->Username = getenv('MAIL_USERNAME');
               $mail->Password = getenv('MAIL_PASSWORD');
+              echo 'MAIL_FROM: ' . getenv('MAIL_FROM');
+
               $mail->setFrom(getenv('MAIL_FROM'), getenv('MAIL_FROM_NAME'));
 
               $mail->Subject = $post_subject;
