@@ -71,22 +71,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['csrf_token']) && hash
          
 
               //Auto-reply email
-              $reply = new PHPMailer(true);
-              $reply->isSMTP();
-              $reply->SMTPAuth = true;
-              $reply->SMTPSecure = 'ssl'; // or 'tls' based on your setup
-              $reply->Host = getenv('MAIL_HOST'); // Using Brevo's SMTP host
-              $reply->Port = 465; // or 587 for 'tls'
-              $reply->isHTML(true);
-              $reply->Username = getenv('MAIL_USERNAME');
-              $reply->Password = getenv('MAIL_PASSWORD');
-              $reply->setFrom(getenv('MAIL_FROM'), getenv('MAIL_FROM_NAME'));
-              $reply->Subject = 'Thank you for reaching out!';
-              $reply->Body = '<p>Thank you for reaching out! I will get back to you shortly.</p>';
-              $reply->addAddress($post_from); // User's email address from the form
+              // $reply = new PHPMailer(true);
+              // $reply->isSMTP();
+              // $reply->SMTPAuth = true;
+              // $reply->SMTPSecure = 'ssl'; // or 'tls' based on your setup
+              // $reply->Host = getenv('MAIL_HOST'); // Using Brevo's SMTP host
+              // $reply->Port = 465; // or 587 for 'tls'
+              // $reply->isHTML(true);
+              // $reply->Username = getenv('MAIL_USERNAME');
+              // $reply->Password = getenv('MAIL_PASSWORD');
+              // $reply->setFrom(getenv('MAIL_FROM'), getenv('MAIL_FROM_NAME'));
+              // $reply->Subject = 'Thank you for reaching out!';
+              // $reply->Body = '<p>Thank you for reaching out! I will get back to you shortly.</p>';
+              // $reply->addAddress($post_from); // User's email address from the form
 
               // Send the reply email
-              $reply->send();
+              // $reply->send();
 
           } catch (Exception $e) {
               // Handle exceptions
