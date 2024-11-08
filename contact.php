@@ -55,6 +55,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['csrf_token']) && hash
               $mail->SMTPAuth = true;
               $mail->SMTPSecure = 'tls';
               $mail->Host = getenv('MAIL_HOST');
+              var_dump(getenv('MAIL_HOST')); // Should output "smtp-relay.brevo.com"
+
               $mail->Port = 587;
               $mail->isHTML(true);
               $mail->Username = getenv('MAIL_USERNAME');
