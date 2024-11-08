@@ -13,6 +13,7 @@ require_once "functions.php";
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <!-- Include header styles and scripts -->
+  <?php include 'header-meta.php'; ?>
   <?php include 'header-styles.php'; ?>
   <?php include 'header-scripts.php'; ?>
 
