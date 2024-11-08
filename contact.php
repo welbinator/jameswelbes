@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['csrf_token']) && hash
           try {
               // Setup PHPMailer
               $mail = new PHPMailer(true);
-              // $mail->SMTPDebug = 2;
+              $mail->SMTPDebug = 2;
               $mail->SMTPOptions = [
                 'ssl' => [
                     'verify_peer' => false,
