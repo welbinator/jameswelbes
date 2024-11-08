@@ -1,3 +1,4 @@
 vendor
 node_modules
 admin/php-error.log
+.env

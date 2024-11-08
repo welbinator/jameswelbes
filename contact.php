@@ -2,8 +2,17 @@
 // Include header
 require_once "includes/header.php";
 
+// Create a sessions folder in your project root, e.g., '/app/sessions'
+if (!file_exists(__DIR__ . '/sessions')) {
+  mkdir(__DIR__ . '/sessions', 0777, true);
+}
+
+// Set the session save path
+session_save_path(__DIR__ . '/sessions');
+
 // Start session for CSRF protection
 session_start();
+
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -18,62 +27,78 @@ if (empty($_SESSION['csrf_token'])) {
     $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
 }
 
+
 // Check if the form is submitted
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['csrf_token']) && hash_equals($_SESSION['csrf_token'], $_POST['csrf_token'])) {
-    // Sanitize inputs
-    $post_subject = filter_var($_POST['subject'], FILTER_SANITIZE_STRING);
-    $post_body = filter_var($_POST['message'], FILTER_SANITIZE_STRING);
-    $post_from = filter_var($_POST['from'], FILTER_SANITIZE_EMAIL);
-    $post_name = filter_var($_POST['name'], FILTER_SANITIZE_STRING);
+    if (isset($_POST['csrf_token']) && hash_equals($_SESSION['csrf_token'], $_POST['csrf_token'])) {
+      // Sanitize inputs
+      $post_subject = filter_var($_POST['subject'], FILTER_SANITIZE_STRING);
+      $post_body = filter_var($_POST['message'], FILTER_SANITIZE_STRING);
+      $post_from = filter_var($_POST['from'], FILTER_SANITIZE_EMAIL);
+      $post_name = filter_var($_POST['name'], FILTER_SANITIZE_STRING);
 
-    // Validate inputs
-    if (filter_var($post_from, FILTER_VALIDATE_EMAIL) && !empty($post_name) && !empty($post_subject) && !empty($post_body)) {
-        try {
-            // Setup PHPMailer
-            $mail = new PHPMailer(true);
-            $mail->isSMTP();
-            $mail->SMTPAuth = true;
-            $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-            $mail->Host = 'smtp.gmail.com';
-            $mail->Port = 465;
-            $mail->isHTML(true);
-            $mail->Username = getenv('MAIL_USERNAME'); // Use environment variables for credentials
-            $mail->Password = getenv('MAIL_PASSWORD');
-            $mail->SetFrom($post_from);
-            $mail->Subject = $post_subject;
-            $mail->Body = "<h3>From: $post_name</h3><br><p>Email: $post_from</p><br>$post_body";
-            $mail->AddAddress('james.welbes@gmail.com');
+      // Validate inputs
+      if (filter_var($post_from, FILTER_VALIDATE_EMAIL) && !empty($post_name) && !empty($post_subject) && !empty($post_body)) {
+          try {
+              // Setup PHPMailer
+              $mail = new PHPMailer(true);
+              // $mail->SMTPDebug = 2;
+              $mail->SMTPOptions = [
+                'ssl' => [
+                    'verify_peer' => false,
+                    'verify_peer_name' => false,
+                    'allow_self_signed' => true,
+                ],
+            ];
+            
+              $mail->isSMTP();
+              $mail->SMTPAuth = true;
+              $mail->SMTPSecure = 'tls';
+              $mail->Host = getenv('MAIL_HOST');
+              $mail->Port = 587;
+              $mail->isHTML(true);
+              $mail->Username = getenv('MAIL_USERNAME');
+              $mail->Password = getenv('MAIL_PASSWORD');
+              $mail->setFrom(getenv('MAIL_FROM'), getenv('MAIL_FROM_NAME'));
 
-            // Send the email
-            $mail->send();
+              $mail->Subject = $post_subject;
+              $mail->Body = "<h3>From: $post_name</h3><br><p>Email: $post_from</p><br>$post_body";
+              $mail->AddAddress('james.welbes@gmail.com');
 
-            // Auto-reply email
-            $reply = new PHPMailer(true);
-            $reply->isSMTP();
-            $reply->SMTPAuth = true;
-            $reply->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-            $reply->Host = 'smtp.gmail.com';
-            $reply->Port = 465;
-            $reply->isHTML(true);
-            $reply->Username = getenv('MAIL_USERNAME');
-            $reply->Password = getenv('MAIL_PASSWORD');
-            $reply->SetFrom('james.welbes@gmail.com');
-            $reply->Subject = 'Thank you for reaching out!';
-            $reply->Body = '<p>Thank you for reaching out! I will get back to you shortly.</p>';
-            $reply->AddAddress($post_from);
+              // Send the email
+              $mail->send();
 
-            // Send the reply email
-            $reply->send();
-        } catch (Exception $e) {
-            // Handle exceptions
-            echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
-        }
-    } else {
-        echo "Invalid form submission. Please make sure all fields are filled out correctly.";
-    }
-} else {
-    // Handle CSRF token mismatch or invalid submission
-    echo "Invalid request.";
+         
+
+              //Auto-reply email
+              $reply = new PHPMailer(true);
+              $reply->isSMTP();
+              $reply->SMTPAuth = true;
+              $reply->SMTPSecure = 'ssl'; // or 'tls' based on your setup
+              $reply->Host = getenv('MAIL_HOST'); // Using Brevo's SMTP host
+              $reply->Port = 465; // or 587 for 'tls'
+              $reply->isHTML(true);
+              $reply->Username = getenv('MAIL_USERNAME');
+              $reply->Password = getenv('MAIL_PASSWORD');
+              $reply->setFrom(getenv('MAIL_FROM'), getenv('MAIL_FROM_NAME'));
+              $reply->Subject = 'Thank you for reaching out!';
+              $reply->Body = '<p>Thank you for reaching out! I will get back to you shortly.</p>';
+              $reply->addAddress($post_from); // User's email address from the form
+
+              // Send the reply email
+              $reply->send();
+
+          } catch (Exception $e) {
+              // Handle exceptions
+              echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+          }
+      } else {
+          echo "Invalid form submission. Please make sure all fields are filled out correctly.";
+      }
+  } else {
+      // Handle CSRF token mismatch or invalid submission
+      echo "Invalid request.";
+  }
 }
 
 ?>
@@ -94,32 +119,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['csrf_token']) && hash
                 <div class="row form-group">
                   <div class="col-md-6 mb-3 mb-md-0">
                     <label class="text-white" for="fname">First Name</label>
-                    <input type="text" name="name" id="fname" class="form-control" required>
+                    <input type="text" name="name" id="fname" class="form-control" required value="James">
                   </div>
                   <div class="col-md-6">
                     <label class="text-white" for="lname">Last Name</label>
-                    <input type="text" name="lname" id="lname" class="form-control">
+                    <input type="text" name="lname" id="lname" class="form-control" value="Welbes">
                   </div>
                 </div>
 
                 <div class="row form-group">
                   <div class="col-md-12">
                     <label class="text-white" for="email">Email</label>
-                    <input type="email" name="from" id="email" class="form-control" required>
+                    <input type="email" name="from" id="email" class="form-control" required value="james.welbes@gmail.com">
                   </div>
                 </div>
 
                 <div class="row form-group">
                   <div class="col-md-12">
                     <label class="text-white" for="subject">Subject</label>
-                    <input type="text" name="subject" id="subject" class="form-control" required>
+                    <input type="text" name="subject" id="subject" class="form-control" required value="test">
                   </div>
                 </div>
 
                 <div class="row form-group mb-5">
                   <div class="col-md-12">
                     <label class="text-white" for="message">Message</label>
-                    <textarea name="message" id="message" cols="30" rows="7" class="form-control" required placeholder="Write your notes or questions here..."></textarea>
+                    <textarea name="message" id="message" cols="30" rows="7" class="form-control" required placeholder="Write your notes or questions here...">Test</textarea>
                   </div>
                 </div>
 
