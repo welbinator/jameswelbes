@@ -30,7 +30,16 @@ if (empty($_SESSION['csrf_token'])) {
 
 // Check if the form is submitted
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['csrf_token']) && hash_equals($_SESSION['csrf_token'], $_POST['csrf_token'])) {
-    if (isset($_POST['csrf_token']) && hash_equals($_SESSION['csrf_token'], $_POST['csrf_token'])) {
+    
+  // Verify reCAPTCHA response
+  $recaptchaSecret = 'YOUR_SECRET_KEY';
+  $recaptchaResponse = $_POST['g-recaptcha-response'];
+  $response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=$recaptchaSecret&response=$recaptchaResponse");
+  $responseKeys = json_decode($response, true);
+
+  if (intval($responseKeys["success"]) !== 1) {
+    echo "Please complete the CAPTCHA.";
+} else {
       // Sanitize inputs
       $post_subject = filter_var($_POST['subject'], FILTER_SANITIZE_STRING);
       $post_body = filter_var($_POST['message'], FILTER_SANITIZE_STRING);
@@ -95,10 +104,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['csrf_token']) && hash
       } else {
           echo "Invalid form submission. Please make sure all fields are filled out correctly.";
       }
-  } else {
-      // Handle CSRF token mismatch or invalid submission
-      echo "Invalid request.";
-  }
+  } 
 }
 
 ?>
