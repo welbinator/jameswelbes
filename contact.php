@@ -138,7 +138,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['csrf_token']) && hash
                 </div>
 
                 <!-- reCAPTCHA -->
-                <div class="g-recaptcha" data-sitekey="YOUR_SITE_KEY"></div> <!-- Replace YOUR_SITE_KEY with actual site key -->
+                <div class="g-recaptcha" data-sitekey="6Lf81H4qAAAAAEmx1r8QXaSxDEXiEXqlZIkwZsN8"></div> <!-- Replace YOUR_SITE_KEY with actual site key -->
 
                 <!-- Submit Button -->
                 <div class="row form-group">
