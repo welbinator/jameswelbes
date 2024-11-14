@@ -84,6 +84,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['csrf_token']) && hash
 }
 ?>
 
+<!-- Include Google reCAPTCHA script -->
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
 <div class="container-fluid contact">
   <div class="row justify-content-center">
     <div class="col-md-6 pt-4" data-aos="fade-up">
@@ -97,10 +100,47 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['csrf_token']) && hash
                 <!-- Hidden CSRF token -->
                 <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($_SESSION['csrf_token']); ?>">
 
-                <!-- Your other form fields here -->
+                <!-- First Name -->
+                <div class="row form-group">
+                  <div class="col-md-6 mb-3 mb-md-0">
+                    <label class="text-white" for="fname">First Name</label>
+                    <input type="text" name="name" id="fname" class="form-control" required>
+                  </div>
+                  <!-- Last Name -->
+                  <div class="col-md-6">
+                    <label class="text-white" for="lname">Last Name</label>
+                    <input type="text" name="lname" id="lname" class="form-control">
+                  </div>
+                </div>
 
-                <div class="g-recaptcha" data-sitekey="6Lf81H4qAAAAAEmx1r8QXaSxDEXiEXqlZIkwZsN8"></div> <!-- reCAPTCHA widget -->
+                <!-- Email -->
+                <div class="row form-group">
+                  <div class="col-md-12">
+                    <label class="text-white" for="email">Email</label>
+                    <input type="email" name="from" id="email" class="form-control" required>
+                  </div>
+                </div>
 
+                <!-- Subject -->
+                <div class="row form-group">
+                  <div class="col-md-12">
+                    <label class="text-white" for="subject">Subject</label>
+                    <input type="text" name="subject" id="subject" class="form-control" required>
+                  </div>
+                </div>
+
+                <!-- Message -->
+                <div class="row form-group mb-5">
+                  <div class="col-md-12">
+                    <label class="text-white" for="message">Message</label>
+                    <textarea name="message" id="message" cols="30" rows="7" class="form-control" required placeholder="Write your notes or questions here..."></textarea>
+                  </div>
+                </div>
+
+                <!-- reCAPTCHA -->
+                <div class="g-recaptcha" data-sitekey="YOUR_SITE_KEY"></div> <!-- Replace YOUR_SITE_KEY with actual site key -->
+
+                <!-- Submit Button -->
                 <div class="row form-group">
                   <div class="col-md-12">
                     <input type="submit" value="Send Message" name="submit" class="btn">
@@ -115,6 +155,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['csrf_token']) && hash
     </div>
   </div>
 </div>
+
 
 <?php
 // Include footer
