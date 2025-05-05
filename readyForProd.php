@@ -30,7 +30,7 @@ $searchReplacePairs = [
     '<a href="bio.php">' => '<a href="bio">',
     '<a href="contact.php">' => '<a href="contact">',
     '<a href="webdesign.php">' => '<a href="webdesign">',
-    '<a href="my-ramblings.php">' => '<a href="my-ramblings">',
+    '<a href="ramblings.php">' => '<a href="ramblings">',
     '<a href="resume.php">' => '<a href="resume">',
 ];
 

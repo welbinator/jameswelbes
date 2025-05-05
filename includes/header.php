@@ -40,7 +40,7 @@ require_once "functions.php";
             <li><a href="/bio">Bio</a></li>
             <li><a href="/contact">Contact</a></li>
             <li><a href="/webdesign">Web Design</a></li>
-            <li><a href="/blog">Blog</a></li>
+            <li><a href="/ramblings">Blog</a></li>
           </ul>
         </div>
       </div>
