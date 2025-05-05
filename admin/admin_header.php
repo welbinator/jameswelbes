@@ -37,6 +37,17 @@ header("Strict-Transport-Security: max-age=31536000; includeSubDomains; preload"
     <!-- TinyMCE Script -->
     <script src="https://cdn.tiny.cloud/1/7oc6yxpf300lo0d20iaoihqvz41lla6ceg6igx6r6vu6h3vj/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
 
+    <script>
+        tinymce.init({
+        selector: 'textarea#post_content',
+        plugins: 'link image code lists',
+        toolbar: 'undo redo | styles | bold italic underline | alignleft aligncenter alignright | bullist numlist | outdent indent | link image | code',
+        menubar: false,
+        height: 400,
+        branding: false
+        });
+    </script>
+
 
 </head>
 

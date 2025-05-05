@@ -13,8 +13,13 @@ if (isset($_POST['create_post'])) {
     $post_title = strip_tags($_POST['title']); // Strip HTML tags, allowing only plain text
     $post_category_id = filter_input(INPUT_POST, 'post_category', FILTER_VALIDATE_INT); // Validate category ID as integer
     $post_status = strip_tags($_POST['post_status']); // Strip HTML tags for status
-    // $post_content = $purifier->purify($_POST['post_content']); // Purify post content to allow safe HTML
-    $post_content = $purifier->purify("Post Content");
+    $post_content = $purifier->purify($_POST['post_content']);
+
+    if (empty(trim($post_content))) {
+        echo "<p class='bg-danger'>Post content cannot be empty.</p>";
+        return;
+    }
+    
     $post_desc = strip_tags($_POST['desc']); // Strip HTML tags from description
 
     // File upload settings
@@ -62,7 +67,31 @@ if (isset($_POST['create_post'])) {
             echo "<p class='bg-danger'>Invalid file type or file too large. Only JPEG, PNG, and GIF files under 5MB are allowed.</p>";
         }
     } else {
-        echo "<p class='bg-danger'>Error in file upload or no file uploaded.</p>";
+        // No file uploaded — proceed without an image
+        $post_image = ''; // or use a default image filename if you prefer
+
+        // Insert post into the database without image upload
+        $query = "INSERT INTO posts (post_category_id, post_title, post_date, post_image, post_status, post_content, post_desc) VALUES (?, ?, NOW(), ?, ?, ?, ?)";
+        $stmt = $connection->prepare($query);
+
+        if (!$stmt) {
+            die("Prepare failed: (" . $connection->errno . ") " . $connection->error);
+        }
+
+        $stmt->bind_param("isssss", $post_category_id, $post_title, $post_image, $post_status, $post_content, $post_desc);
+
+        if (!$stmt->execute()) {
+            die("Execute failed: (" . $stmt->errno . ") " . $stmt->error);
+        }
+
+        if ($stmt->affected_rows > 0) {
+            $the_post_id = $stmt->insert_id;
+            echo "<p class='bg-success'>Post Created. <a href='../post.php?p_id=" . htmlspecialchars($the_post_id) . "'>View Post</a> or <a href='posts.php'>Edit More Posts</a>.</p>";
+        } else {
+            echo "<p class='bg-danger'>No rows affected. Post was not created.</p>";
+        }
+
+        $stmt->close();
     }
 }
 ?>
@@ -104,10 +133,11 @@ if (isset($_POST['create_post'])) {
         <input type="file" class="form-control" name="image" accept=".jpg,.jpeg,.png,.gif">
     </div>
 
-    <!-- <div class="form-group">
+    <div class="form-group">
         <label for="post_content">Post Content</label>
-        <textarea class="form-control textarea-editor" name="post_content" cols="30" rows="10" required></textarea>
-    </div> -->
+        <textarea id="post_content" name="post_content" class="form-control" rows="10"></textarea>
+    </div>
+
 
     <div class="form-group">
         <label for="desc">Post Description</label>
