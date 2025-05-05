@@ -2,4 +2,4 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/jameswelbes/public_html/
-    - rsync -rv --exclude 'admin' ./ $DEPLOYPATH
+    - rsync -rv --delete --exclude 'admin' ./ $DEPLOYPATH

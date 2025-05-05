@@ -98,7 +98,7 @@ if ($page_count > 1) {
     var numPosts = $(".blog-entry").length;
 
     function f() {
-      console.log("hi");
+      
       i++;
       if (i < numPosts) {
         setTimeout(f, 3000);
