@@ -8,7 +8,7 @@ require_once "includes/header.php";
 
     <!-- Blog Entries Column -->
     <div class="col-md-8">
-      <h2 class="text-white mb-4 text-center">My Ramblings</h2>
+      <h2 class="text-white mb-4 text-center">My Ramblings bruh</h2>
 
       <?php
       // Pagination
