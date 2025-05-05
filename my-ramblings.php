@@ -86,7 +86,7 @@ if ($page_count > 1) {
     echo '<nav><ul class="pagination">';
     for ($i = 1; $i <= $page_count; $i++) {
         $active_class = ($i == $page) ? 'active' : '';
-        echo "<li class='page-item $active_class'><a class='page-link' href='my-ramblings.php?page=$i'>$i</a></li>";
+        echo "<li class='page-item $active_class'><a class='page-link' href='blog.php?page=$i'>$i</a></li>";
     }
     echo '</ul></nav>';
 }
