@@ -1,4 +1,9 @@
 RewriteEngine On
+# Handle the blog post listing (e.g., /blog)
+RewriteRule ^blog/?$ blog.php [L]
+
+# Handle individual blog posts by slug (e.g., /blog/post-slug)
+RewriteRule ^blog/([^/]+)$ blog/index.php?slug=$1 [L]
 
 # Redirect HTTP to HTTPS
 RewriteCond %{HTTPS} off
