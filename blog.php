@@ -41,7 +41,7 @@ require_once "includes/header.php";
               $post_title = htmlspecialchars($row['post_title'], ENT_QUOTES, 'UTF-8');
               $post_date = htmlspecialchars($row['post_date'], ENT_QUOTES, 'UTF-8');
               $post_image = htmlspecialchars($row['post_image'], ENT_QUOTES, 'UTF-8');
-              $post_content = htmlspecialchars(substr($row['post_content'], 0, 200), ENT_QUOTES, 'UTF-8');
+              $post_content = substr(strip_tags($row['post_content']), 0, 200);
       ?>
 
       <div>
