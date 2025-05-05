@@ -58,7 +58,7 @@ require_once "includes/header.php";
                 <h2 class="mt-0 mb-2">
                   <a href="single.php?p_id=<?php echo $post_id; ?>"><?php echo $post_title; ?></a>
                 </h2>
-                <div class="meta mb-3">Posted by James on <?php echo $post_date; ?></div>
+                <div class="meta mb-3">Posted on <?php echo $post_date; ?></div>
                 <p><?php echo $post_content; ?>... 
                   <a href="single.php?p_id=<?php echo $post_id; ?>">read more.</a>
                 </p>

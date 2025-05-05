@@ -6,7 +6,7 @@
 
     <!-- Blog Entries Column -->
     <div class="col-md-8" itemscope itemtype="http://schema.org/Article">
-      <!--                <h2 class="text-white mb-4 text-center">My Ramblings</h2> -->
+      
 
 
       <?php
