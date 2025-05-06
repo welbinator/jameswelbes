@@ -49,7 +49,7 @@
         <p class="lead">
           by <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name"><?php echo $post_author ?></span></span>
         </p>
-        <p><span class="glyphicon glyphicon-time" Posted on <span itemprop="datePublished"><?php echo $post_date ?></span></span></p>
+        <p><span class="glyphicon glyphicon-time"> Posted on <span itemprop="datePublished"><?php echo $post_date ?></span></span></p>
         <hr>
 
         <hr>

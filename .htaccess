@@ -1,6 +1,7 @@
 RewriteEngine On
 
-RewriteRule ^posts/([^/]+)$ posts/index.php [L]
+RewriteRule ^posts/([^/]+)$ posts/index.php?slug=$1 [L]
+
 
 # Redirect HTTP to HTTPS
 RewriteCond %{HTTPS} off
