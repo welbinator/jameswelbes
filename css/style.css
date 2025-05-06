@@ -1,3 +1,6 @@
+.single-post-featured-image {
+  max-width: 600px;
+}
 .headerMobileHeight {
   height: 100%!important;
 }
