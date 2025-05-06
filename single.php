@@ -39,7 +39,7 @@
 
 
         <!-- First Blog Post -->
-        <img loading="lazy" itemprop="image" class="img-responsive" src="images/posts/<?php echo $post_image; ?>" alt="<?php echo $post_title; ?>">
+        <img loading="lazy" itemprop="image" class="img-responsive single-post-featured-image" src="images/posts/<?php echo $post_image; ?>" alt="<?php echo $post_title; ?>">
         <h2>
           <a href="#"><span itemprop="headline"><?php echo $post_title ?></span></a>
         </h2>
