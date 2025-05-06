@@ -31,6 +31,7 @@ define('DB_HOST', $db_host);
 
 // Establish the database connection
 $connection = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+$connection->set_charset("utf8mb4");
 
 // Check the connection
 if (!$connection) {
