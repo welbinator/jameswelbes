@@ -26,31 +26,12 @@ require_once "functions.php";
     <!-- Header Section -->
     <header id="header" class="header-bar d-flex d-lg-block align-items-center" data-aos="fade-left">
       <div id="site-logo" class="site-logo">
-        <a href="home">
+        <a href="/">
           <img loading="lazy" src="images/profilesticker.png" width="150" height="auto" alt="James Welbes Profile Logo">
         </a>
       </div>
 
-      <!-- Mobile Menu -->
-      <div class="mobile-menu-container hide" id="mobileMenu">
-        <div class="inner">
-          <span id="close" onclick="hideMenu();">X</span>
-          <ul>
-            <li><a href="/home">Home</a></li>
-            <li><a href="/bio">Bio</a></li>
-            <li><a href="/contact">Contact</a></li>
-            <li><a href="/webdesign">Web Design</a></li>
-            <li><a href="/blog">Blog</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Mobile Menu Icon -->
-      <div class="mobile-menu-icon" style="position: relative; top: 3px;">
-        <a href="#" class="site-menu-toggle text-white">
-          <span class="icon-menu h3" onclick="showMenu();"></span>
-        </a>
-      </div>
+      <?php include "includes/mobile-menu.php"; ?>
 
       <!-- Include navigation -->
       <?php include "includes/navigation.php"; ?>

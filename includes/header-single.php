@@ -88,7 +88,7 @@ if (isset($_GET['p_id'])) {
         <div class="inner">
           <span id="close" onclick="hideMenu();">X</span>
           <ul>
-            <li><a href="/home">Home</a></li>
+            <li><a href="/">Home</a></li>
             <li><a href="/bio">Bio</a></li>
             <li><a href="/contact">Contact</a></li>
             <li><a href="/webdesign">Web Design</a></li>

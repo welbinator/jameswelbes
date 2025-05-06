@@ -30,7 +30,7 @@ require_once "includes/header.php";
       $page_count = ceil($total_posts / $posts_per_page);
 
       // Fetch posts with pagination
-      $query = "SELECT post_id, post_title, post_date, post_image, post_content, post_status FROM posts WHERE post_status = 'Published' LIMIT ?, ?";
+      $query = "SELECT post_id, post_title, post_date, post_image, post_content, post_status, post_slug FROM posts WHERE post_status = 'Published' LIMIT ?, ?";
       if ($stmt = $connection->prepare($query)) {
           $stmt->bind_param('ii', $offset, $posts_per_page);
           $stmt->execute();
@@ -38,8 +38,8 @@ require_once "includes/header.php";
 
           while ($row = $result->fetch_assoc()) {
               $post_id = htmlspecialchars($row['post_id'], ENT_QUOTES, 'UTF-8');
-              // $post_title = htmlspecialchars($row['post_title'], ENT_QUOTES, 'UTF-8');
               $post_title = substr(strip_tags($row['post_title']), 0, 200);
+              $post_slug = htmlspecialchars($row['post_slug'], ENT_QUOTES, 'UTF-8');
               $post_date = htmlspecialchars($row['post_date'], ENT_QUOTES, 'UTF-8');
               $post_image = htmlspecialchars($row['post_image'], ENT_QUOTES, 'UTF-8');
               $post_content = substr(strip_tags($row['post_content']), 0, 200);
@@ -50,17 +50,17 @@ require_once "includes/header.php";
           <div class="col-md-12">
             <div class="d-flex blog-entry align-items-start flex-wrap">
               <div class="mr-5 img-wrap">
-                <a href="single.php?p_id=<?php echo $post_id; ?>">
+                <a href="posts/<?php echo $post_slug; ?>">
                   <img loading="lazy" src="images/posts/<?php echo $post_image; ?>" alt="Image" class="img-fluid">
                 </a>
               </div>
               <div class="blog-archive-content-box">
                 <h2 class="mt-0 mb-2">
-                  <a href="single.php?p_id=<?php echo $post_id; ?>"><?php echo $post_title; ?></a>
+                  <a href="posts/<?php echo $post_slug; ?>"><?php echo $post_title; ?></a>
                 </h2>
                 <div class="meta mb-3">Posted by James on <?php echo $post_date; ?></div>
                 <p><?php echo $post_content; ?>... 
-                  <a href="single.php?p_id=<?php echo $post_id; ?>">read more.</a>
+                  <a href="posts/<?php echo $post_slug; ?>">read more.</a>
                 </p>
               </div>
             </div>

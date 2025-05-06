@@ -1,7 +1,7 @@
 <?php
 
 /*
-* Rename .htaccess to .htaccess.bak for backup
+* Rename .htaccess.bak to .htaccess for production
 */
 $htaccessPath = __DIR__ . '/.htaccess.bak';
 $backupPath = __DIR__ . '/.htaccess';
@@ -17,48 +17,46 @@ if (file_exists($htaccessPath)) {
 }
 
 /*
-* Update navigation for production
+* Update navigation and mobile menu links for production
 */
-$filePath = __DIR__ . '/includes/navigation.php';
-
-// Read the content of the file
-$fileContent = file_get_contents($filePath);
-
-// Perform search and replace to revert changes
-$searchReplacePairs = [
-    '<a href="home.php">' => '<a href="home">',
-    '<a href="bio.php">' => '<a href="bio">',
-    '<a href="contact.php">' => '<a href="contact">',
-    '<a href="webdesign.php">' => '<a href="webdesign">',
-    '<a href="blog.php">' => '<a href="blog">',
-    '<a href="resume.php">' => '<a href="resume">',
+$navFiles = [
+    __DIR__ . '/includes/navigation.php',
+    __DIR__ . '/includes/mobile-menu.php',
 ];
 
-foreach ($searchReplacePairs as $search => $replace) {
-    $fileContent = str_replace($search, $replace, $fileContent);
+$searchReplacePairs = [
+    '<a href="home.php">'    => '<a href="home">',
+    '<a href="bio.php">'     => '<a href="bio">',
+    '<a href="contact.php">' => '<a href="contact">',
+    '<a href="webdesign.php">' => '<a href="webdesign">',
+    '<a href="blog.php">'    => '<a href="blog">',
+    '<a href="resume.php">'  => '<a href="resume">',
+];
+
+foreach ($navFiles as $filePath) {
+    if (file_exists($filePath)) {
+        $fileContent = file_get_contents($filePath);
+        foreach ($searchReplacePairs as $search => $replace) {
+            $fileContent = str_replace($search, $replace, $fileContent);
+        }
+        file_put_contents($filePath, $fileContent);
+        echo basename($filePath) . " links updated for production.\n";
+    } else {
+        echo basename($filePath) . " not found.\n";
+    }
 }
 
-// Write the modified content back to the file
-file_put_contents($filePath, $fileContent);
-
 /*
-* update database for production
+* Update database configuration to production
 */
-
-// Define the path to the db.php file
 $dbFilePath = __DIR__ . '/db.php';
-
-// Read the content of the db.php file
-$content = file_get_contents($dbFilePath);
-
-// Define the search and replace strings
-$searchString = "\$currentDbConfig = \$dbConfigs['devDB'];";
-$replaceString = "\$currentDbConfig = \$dbConfigs['prodDB'];";
-
-// Replace the development database configuration with the production configuration
-$updatedContent = str_replace($searchString, $replaceString, $content);
-
-// Write the updated content back to the db.php file
-file_put_contents($dbFilePath, $updatedContent);
-
-echo "Database configuration has been updated to production.\n";
+if (file_exists($dbFilePath)) {
+    $content = file_get_contents($dbFilePath);
+    $searchString = "\$currentDbConfig = \$dbConfigs['devDB'];";
+    $replaceString = "\$currentDbConfig = \$dbConfigs['prodDB'];";
+    $updatedContent = str_replace($searchString, $replaceString, $content);
+    file_put_contents($dbFilePath, $updatedContent);
+    echo "Database configuration has been updated to production.\n";
+} else {
+    echo "db.php not found.\n";
+}

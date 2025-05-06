@@ -17,48 +17,47 @@ if (file_exists($htaccessPath)) {
 }
 
 /*
-* Update navigation for development
+* Update navigation and mobile menu for development
 */
-$filePath = __DIR__ . '/includes/navigation.php';
-
-// Read the content of the file
-$fileContent = file_get_contents($filePath);
-
-// Perform search and replace
-$searchReplacePairs = [
-    '<a href="home">' => '<a href="home.php">',
-    '<a href="bio">' => '<a href="bio.php">',
-    '<a href="contact">' => '<a href="contact.php">',
-    '<a href="webdesign">' => '<a href="webdesign.php">',
-    '<a href="blog">' => '<a href="blog.php">',
-    '<a href="resume">' => '<a href="resume.php">',
+$navFiles = [
+    __DIR__ . '/includes/navigation.php',
+    __DIR__ . '/includes/mobile-menu.php',
 ];
 
-foreach ($searchReplacePairs as $search => $replace) {
-    $fileContent = str_replace($search, $replace, $fileContent);
-}
+$searchReplacePairs = [
+    '<a href="home">'      => '<a href="home.php">',
+    '<a href="bio">'       => '<a href="bio.php">',
+    '<a href="contact">'   => '<a href="contact.php">',
+    '<a href="webdesign">' => '<a href="webdesign.php">',
+    '<a href="blog">'      => '<a href="blog.php">',
+    '<a href="resume">'    => '<a href="resume.php">',
+];
 
-// Write the modified content back to the file
-file_put_contents($filePath, $fileContent);
+foreach ($navFiles as $filePath) {
+    if (file_exists($filePath)) {
+        $fileContent = file_get_contents($filePath);
+        foreach ($searchReplacePairs as $search => $replace) {
+            $fileContent = str_replace($search, $replace, $fileContent);
+        }
+        file_put_contents($filePath, $fileContent);
+        echo basename($filePath) . " links updated for development.\n";
+    } else {
+        echo basename($filePath) . " not found.\n";
+    }
+}
 
 /*
 * Update db for development
 */
-
-// Define the path to the db.php file
 $dbFilePath = __DIR__ . '/db.php';
 
-// Read the content of the db.php file
-$content = file_get_contents($dbFilePath);
-
-// Define the search and replace strings
-$searchString = "\$currentDbConfig = \$dbConfigs['prodDB'];";
-$replaceString = "\$currentDbConfig = \$dbConfigs['devDB'];";
-
-// Replace the production database configuration with the development configuration
-$updatedContent = str_replace($searchString, $replaceString, $content);
-
-// Write the updated content back to the db.php file
-file_put_contents($dbFilePath, $updatedContent);
-
-echo "Database configuration has been updated to development.\n";
+if (file_exists($dbFilePath)) {
+    $content = file_get_contents($dbFilePath);
+    $searchString = "\$currentDbConfig = \$dbConfigs['prodDB'];";
+    $replaceString = "\$currentDbConfig = \$dbConfigs['devDB'];";
+    $updatedContent = str_replace($searchString, $replaceString, $content);
+    file_put_contents($dbFilePath, $updatedContent);
+    echo "Database configuration has been updated to development.\n";
+} else {
+    echo "db.php not found.\n";
+}
