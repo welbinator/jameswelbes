@@ -1,6 +1,7 @@
 <?php
 require_once "../includes/header-single.php";
 
+// Sanitize the slug
 $slug = isset($_GET['slug']) ? mysqli_real_escape_string($connection, $_GET['slug']) : '';
 
 if (!$slug) {
@@ -9,14 +10,8 @@ if (!$slug) {
     exit;
 }
 
-// Use LEFT JOIN so post still shows without a category
-$query = "
-    SELECT posts.*, categories.cat_title 
-    FROM posts 
-    LEFT JOIN categories ON categories.cat_id = posts.post_category_id 
-    WHERE posts.post_slug = '$slug'
-";
-
+// Query post by slug (no JOIN)
+$query = "SELECT * FROM posts WHERE post_slug = '$slug'";
 $result = mysqli_query($connection, $query);
 
 if (!$result || mysqli_num_rows($result) === 0) {
@@ -32,7 +27,6 @@ $post_author   = $row['post_author'];
 $post_date     = $row['post_date'];
 $post_image    = $row['post_image'];
 $post_content  = $row['post_content'];
-$post_category = $row['cat_title'] ?? 'Uncategorized'; // fallback
 ?>
 
 <div class="container-fluid posts">
@@ -40,8 +34,6 @@ $post_category = $row['cat_title'] ?? 'Uncategorized'; // fallback
     <div class="col-md-8" itemscope itemtype="http://schema.org/Article">
       <img loading="lazy" itemprop="image" class="img-responsive single-post-featured-image" src="/images/posts/<?php echo $post_image; ?>" alt="<?php echo htmlspecialchars($post_title); ?>">
       <h2><span itemprop="headline"><?php echo $post_title ?></span></h2>
-      <hr class="category-divider">
-      <h6 class="categories-meta"><?php echo $post_category; ?></h6>
       <hr class="category-divider">
       <p class="lead">
         by <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name"><?php echo $post_author ?></span></span>
