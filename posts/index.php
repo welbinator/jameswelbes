@@ -1,7 +1,6 @@
 <?php
 require_once "../includes/header-single.php";
 
-// Sanitize the slug
 $slug = isset($_GET['slug']) ? mysqli_real_escape_string($connection, $_GET['slug']) : '';
 
 if (!$slug) {
@@ -10,11 +9,11 @@ if (!$slug) {
     exit;
 }
 
-// Query post by slug
+// Use LEFT JOIN so post still shows without a category
 $query = "
-    SELECT * 
+    SELECT posts.*, categories.cat_title 
     FROM posts 
-    JOIN categories ON categories.cat_id = posts.post_category_id 
+    LEFT JOIN categories ON categories.cat_id = posts.post_category_id 
     WHERE posts.post_slug = '$slug'
 ";
 
@@ -33,7 +32,7 @@ $post_author   = $row['post_author'];
 $post_date     = $row['post_date'];
 $post_image    = $row['post_image'];
 $post_content  = $row['post_content'];
-$post_category = $row['cat_title'];
+$post_category = $row['cat_title'] ?? 'Uncategorized'; // fallback
 ?>
 
 <div class="container-fluid posts">
