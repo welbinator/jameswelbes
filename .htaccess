@@ -1,7 +1,10 @@
 RewriteEngine On
 
 # Clean URLs for posts (no leading slash!)
-RewriteRule ^posts/([^/]+)$ posts/index.php?slug=$1 [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^posts/([^/.]+)$ posts/index.php?slug=$1 [L]
+
 
 # HTTPS redirect
 RewriteCond %{HTTPS} off
