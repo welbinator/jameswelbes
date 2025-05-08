@@ -1,13 +1,13 @@
 <?php
-echo "⏳ Reached index.php<br>";
+echo "Reached index.php<br>";
 
 // Step 1: Load dependencies
 require_once "../includes/header-single.php";
-echo "✅ Loaded header-single.php<br>";
+echo "Loaded header-single.php<br>";
 
 // Step 2: Get and sanitize slug
 $slug = isset($_GET['slug']) ? $_GET['slug'] : '';
-echo "🔎 Raw slug: $slug<br>";
+echo "Raw slug: $slug<br>";
 
 if (!$slug) {
     echo "<p class='text-danger'>❌ No slug provided</p>";
@@ -17,27 +17,27 @@ if (!$slug) {
 
 // Step 3: Connect to DB and run query
 $escaped_slug = mysqli_real_escape_string($connection, $slug);
-echo "🔐 Escaped slug: $escaped_slug<br>";
+echo "Escaped slug: $escaped_slug<br>";
 
 $query = "SELECT * FROM posts WHERE post_slug = '$escaped_slug'";
-echo "🧪 Running query: $query<br>";
+echo "Running query: $query<br>";
 
 $result = mysqli_query($connection, $query);
 
 if (!$result) {
-    echo "<p class='text-danger'>❌ Query failed: " . mysqli_error($connection) . "</p>";
+    echo "<p class='text-danger'>Query failed: " . mysqli_error($connection) . "</p>";
     require_once "../includes/footer-single.php";
     exit;
 }
 
 if (mysqli_num_rows($result) === 0) {
-    echo "<p class='text-danger'>❌ No post found for slug: $escaped_slug</p>";
+    echo "<p class='text-danger'>No post found for slug: $escaped_slug</p>";
     require_once "../includes/footer-single.php";
     exit;
 }
 
 $row = mysqli_fetch_assoc($result);
-echo "✅ Post found: " . htmlspecialchars($row['post_title']) . "<br>";
+echo "Post found: " . htmlspecialchars($row['post_title']) . "<br>";
 
 // Extract post data
 $post_title    = $row['post_title'];
