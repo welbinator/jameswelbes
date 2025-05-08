@@ -4,10 +4,10 @@
           <span id="close" onclick="hideMenu();">X</span>
           <ul>
             <li><a href="/">Home</a></li>
-            <li><a href="bio.php">Bio</a></li>
-            <li><a href="contact.php">Contact</a></li>
-            <li><a href="webdesign.php">Web Design</a></li>
-            <li><a href="blog.php">Blog</a></li>
+            <li><a href="bio">Bio</a></li>
+            <li><a href="contact">Contact</a></li>
+            <li><a href="webdesign">Web Design</a></li>
+            <li><a href="blog">Blog</a></li>
           </ul>
         </div>
       </div>
