@@ -1,8 +1,14 @@
 <?php
 require_once "../includes/header-single.php";
 
+// DEBUG: Output raw query string for verification
+echo "<pre>DEBUG: \$_GET = "; print_r($_GET); echo "</pre>";
+
 // Sanitize the slug
 $slug = isset($_GET['slug']) ? mysqli_real_escape_string($connection, $_GET['slug']) : '';
+
+// DEBUG: Show the resolved slug
+echo "<p><strong>DEBUG: Slug =</strong> '$slug'</p>";
 
 if (!$slug) {
     echo "<p class='text-danger'>No post found.</p>";
@@ -12,12 +18,19 @@ if (!$slug) {
 
 // Query post by slug (no JOIN)
 $query = "SELECT * FROM posts WHERE post_slug = '$slug'";
+echo "<p><strong>DEBUG: SQL Query =</strong> $query</p>"; // Show query
 $result = mysqli_query($connection, $query);
 
 if (!$result || mysqli_num_rows($result) === 0) {
     echo "<p class='text-danger'>Post not found.</p>";
     require_once "../includes/footer.php";
     exit;
+}
+
+if (mysqli_num_rows($result) === 0) {
+  echo "<p class='text-danger'>Post not found (no rows returned).</p>";
+  require_once "../includes/footer.php";
+  exit;
 }
 
 $row = mysqli_fetch_assoc($result);
