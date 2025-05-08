@@ -1,34 +1,54 @@
 <?php
-require_once "../includes/header-single.php";
+echo "⏳ Reached index.php<br>";
 
-// Sanitize the slug
-$slug = isset($_GET['slug']) ? mysqli_real_escape_string($connection, $_GET['slug']) : '';
+// Step 1: Load dependencies
+require_once "../includes/header-single.php";
+echo "✅ Loaded header-single.php<br>";
+
+// Step 2: Get and sanitize slug
+$slug = isset($_GET['slug']) ? $_GET['slug'] : '';
+echo "🔎 Raw slug: $slug<br>";
 
 if (!$slug) {
-    echo "<p class='text-danger'>No post found.</p>";
-    require_once "../includes/footer.php";
+    echo "<p class='text-danger'>❌ No slug provided</p>";
+    require_once "../includes/footer-single.php";
     exit;
 }
 
-// Query post by slug (no JOIN)
-$query = "SELECT * FROM posts WHERE post_slug = '$slug'";
+// Step 3: Connect to DB and run query
+$escaped_slug = mysqli_real_escape_string($connection, $slug);
+echo "🔐 Escaped slug: $escaped_slug<br>";
+
+$query = "SELECT * FROM posts WHERE post_slug = '$escaped_slug'";
+echo "🧪 Running query: $query<br>";
+
 $result = mysqli_query($connection, $query);
 
-if (!$result || mysqli_num_rows($result) === 0) {
-    echo "<p class='text-danger'>Post not found.</p>";
-    require_once "../includes/footer.php";
+if (!$result) {
+    echo "<p class='text-danger'>❌ Query failed: " . mysqli_error($connection) . "</p>";
+    require_once "../includes/footer-single.php";
+    exit;
+}
+
+if (mysqli_num_rows($result) === 0) {
+    echo "<p class='text-danger'>❌ No post found for slug: $escaped_slug</p>";
+    require_once "../includes/footer-single.php";
     exit;
 }
 
 $row = mysqli_fetch_assoc($result);
+echo "✅ Post found: " . htmlspecialchars($row['post_title']) . "<br>";
 
+// Extract post data
 $post_title    = $row['post_title'];
 $post_author   = $row['post_author'];
 $post_date     = $row['post_date'];
 $post_image    = $row['post_image'];
 $post_content  = $row['post_content'];
+
 ?>
 
+<!-- Now render the post -->
 <div class="container-fluid posts">
   <div class="row align-items-stretch">
     <div class="col-md-8" itemscope itemtype="http://schema.org/Article">
@@ -47,4 +67,4 @@ $post_content  = $row['post_content'];
   </div>
 </div>
 
-<?php require_once "../includes/footer.php"; ?>
+<?php require_once "../includes/footer-single.php"; ?>
