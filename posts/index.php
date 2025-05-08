@@ -1,5 +1,5 @@
 <?php
-require_once "../includes/header.php";
+require_once "../includes/header-single.php";
 
 // Sanitize the slug
 $slug = isset($_GET['slug']) ? mysqli_real_escape_string($connection, $_GET['slug']) : '';
