@@ -1,6 +1,11 @@
 <?php
 
-
+function generate_slug($string) {
+    $slug = strtolower(trim($string));
+    $slug = preg_replace('/[^a-z0-9]+/i', '-', $slug);
+    $slug = preg_replace('/-+/', '-', $slug);
+    return rtrim($slug, '-');
+}
 
 if (isset($_POST['create_post'])) {
     
@@ -11,9 +16,9 @@ if (isset($_POST['create_post'])) {
 
     // Sanitize and validate input data
     $post_title = strip_tags($_POST['title']); // Strip HTML tags, allowing only plain text
+    $post_slug = generate_slug($post_title);
     $post_category_id = filter_input(INPUT_POST, 'post_category', FILTER_VALIDATE_INT); // Validate category ID as integer
     $post_status = strip_tags($_POST['post_status']); // Strip HTML tags for status
-    // $post_content = $purifier->purify($_POST['post_content']); // Purify post content to allow safe HTML
     $post_content = $purifier->purify("Post Content");
     $post_desc = strip_tags($_POST['desc']); // Strip HTML tags from description
 
@@ -31,7 +36,7 @@ if (isset($_POST['create_post'])) {
             // Move the uploaded file to the destination directory
             if (move_uploaded_file($_FILES['image']['tmp_name'], $uploadFile)) {
                 // Insert post into the database using prepared statements
-                $query = "INSERT INTO posts (post_category_id, post_title, post_date, post_image, post_status, post_content, post_desc) VALUES (?, ?, NOW(), ?, ?, ?, ?)";
+                $query = "INSERT INTO posts (post_category_id, post_title, post_slug, post_date, post_image, post_status, post_content, post_desc) VALUES (?, ?, ?, NOW(), ?, ?, ?, ?)";
                 $stmt = $connection->prepare($query);
             
                 if (!$stmt) {
@@ -39,7 +44,7 @@ if (isset($_POST['create_post'])) {
                 }
             
                 
-                $stmt->bind_param("isssss", $post_category_id, $post_title, $post_image, $post_status, $post_content, $post_desc);
+                $stmt->bind_param("issssss", $post_category_id, $post_title, $post_slug, $post_image, $post_status, $post_content, $post_desc);
             
                 if (!$stmt->execute()) {
                     die("Execute failed: (" . $stmt->errno . ") " . $stmt->error);
