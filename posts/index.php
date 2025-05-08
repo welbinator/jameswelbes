@@ -47,4 +47,4 @@ $post_content  = $row['post_content'];
   </div>
 </div>
 
-<?php require_once "../includes/footer.php"; ?>
+<?php require_once "../includes/footer-single.php"; ?>
