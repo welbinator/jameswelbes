@@ -1,19 +1,20 @@
 RewriteEngine On
 
+# Skip .php removal for post slugs
 RewriteRule ^posts/([^/]+)$ posts/index.php?slug=$1 [L]
-
 
 # Redirect HTTP to HTTPS
 RewriteCond %{HTTPS} off
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-# Remove .php extension from URLs
+# Remove .php extension from URLs — but skip if it’s already rewritten by the posts rule
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !^/posts/
 RewriteCond %{REQUEST_FILENAME}.php -f
 RewriteRule ^(.*)$ $1.php [L]
 
-# Redirect to the correct subdirectory for local testing
+# Redirect to subdirectory for local testing (optional, maybe remove in prod)
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ /jameswelbes/$1.php [L]
-
-
