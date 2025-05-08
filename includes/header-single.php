@@ -32,7 +32,7 @@ require_once __DIR__ . '/../functions.php';
 
     <header id="header" class="header-bar d-flex d-lg-block align-items-center aos-init aos-animate" data-aos="fade-left">
       <div id="site-logo" class="site-logo">
-        <a href="home"><img loading="lazy" src="images/profilesticker.png" width="150" alt="James Welbes Profile Logo"></a>
+        <a href="home"><img loading="lazy" src="/images/profilesticker.png" width="150" alt="James Welbes Profile Logo"></a>
       </div>
 
       <div class="mobile-menu-container hide" id="mobileMenu">

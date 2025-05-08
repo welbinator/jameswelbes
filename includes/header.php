@@ -27,7 +27,7 @@ require_once "functions.php";
     <header id="header" class="header-bar d-flex d-lg-block align-items-center" data-aos="fade-left">
       <div id="site-logo" class="site-logo">
         <a href="/">
-          <img loading="lazy" src="images/profilesticker.png" width="150" height="auto" alt="James Welbes Profile Logo">
+          <img loading="lazy" src="/images/profilesticker.png" width="150" height="auto" alt="James Welbes Profile Logo">
         </a>
       </div>
 
