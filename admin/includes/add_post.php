@@ -19,7 +19,7 @@ if (isset($_POST['create_post'])) {
     $post_slug = generate_slug($post_title);
     $post_category_id = filter_input(INPUT_POST, 'post_category', FILTER_VALIDATE_INT); // Validate category ID as integer
     $post_status = strip_tags($_POST['post_status']); // Strip HTML tags for status
-    $post_content = $purifier->purify("Post Content");
+    $post_content = $purifier->purify($_POST['post_content']);
     $post_desc = strip_tags($_POST['desc']); // Strip HTML tags from description
 
     // File upload settings
@@ -109,10 +109,11 @@ if (isset($_POST['create_post'])) {
         <input type="file" class="form-control" name="image" accept=".jpg,.jpeg,.png,.gif">
     </div>
 
-    <!-- <div class="form-group">
+    <div class="form-group">
         <label for="post_content">Post Content</label>
-        <textarea class="form-control textarea-editor" name="post_content" cols="30" rows="10" required></textarea>
-    </div> -->
+        <textarea id="post_content" class="form-control" name="post_content" rows="10"></textarea>
+    </div>
+
 
     <div class="form-group">
         <label for="desc">Post Description</label>
