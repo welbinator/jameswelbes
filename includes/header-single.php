@@ -32,10 +32,10 @@ require_once __DIR__ . '/../functions.php';
       </div>
 
       
-      <?php include "includes/mobile-menu.php"; ?>
+      <?php include __DIR__ . '/../includes/mobile-menu.php'; ?>
      
       <!-- Include navigation -->
-      <?php include "includes/navigation.php"; ?>
+      <?php include __DIR__ . '/../includes/navigation.php"; ?>
 
     </header>
 
