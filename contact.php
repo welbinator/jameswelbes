@@ -86,7 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['csrf_token']) && hash
 <div class="container-fluid contact">
   <div class="row justify-content-center">
     <div class="col-md-6 pt-4" data-aos="fade-up">
-      <h2 id="contactH2" class="text-white mb-4 text-center" data-aos="fade-up">Contact Me</h2>
+      <h2 id="contactH2" class="text-white mb-4 text-center">Contact Me</h2>
       <div class="row">
         <div class="col-md-12">
           <p class="mb-5">Thanks for checking out my humble website. Please feel free to reach out via this contact form, I'd love to connect!</p>
