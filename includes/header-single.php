@@ -35,7 +35,7 @@ require_once __DIR__ . '/../functions.php';
       <?php include __DIR__ . '/../includes/mobile-menu.php'; ?>
      
       <!-- Include navigation -->
-      <?php include __DIR__ . '/../includes/navigation.php"; ?>
+      <?php include __DIR__ . '/../includes/navigation.php'; ?>
 
     </header>
 
