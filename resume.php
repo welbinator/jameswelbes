@@ -8,7 +8,7 @@ require_once "includes/header.php";
 ?>
 
 
-  <div class="container-fluid resume-container">
+  <div class="container-fluid resume-container" data-aos="fade-up">
     <div class="resume-wrapper">
       <h1 class="resume-title">Professional Resume</h1>
       
