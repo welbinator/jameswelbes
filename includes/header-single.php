@@ -35,9 +35,9 @@ require_once __DIR__ . '/../functions.php';
         <a href="home"><img loading="lazy" src="/images/profilesticker.png" width="150" alt="James Welbes Profile Logo"></a>
       </div>
 
-      mobile menu
+      
       <?php include "includes/mobile-menu.php"; ?>
-      menu
+     
       <!-- Include navigation -->
       <?php include "includes/navigation.php"; ?>
 

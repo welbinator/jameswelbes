@@ -30,7 +30,7 @@ require_once "functions.php";
           <img loading="lazy" src="/images/profilesticker.png" width="150" height="auto" alt="James Welbes Profile Logo">
         </a>
       </div>
-
+menu?
       <?php include "includes/mobile-menu.php"; ?>
 
       <!-- Include navigation -->
