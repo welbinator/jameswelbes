@@ -35,21 +35,10 @@ require_once __DIR__ . '/../functions.php';
         <a href="home"><img loading="lazy" src="/images/profilesticker.png" width="150" alt="James Welbes Profile Logo"></a>
       </div>
 
-      <div class="mobile-menu-container hide" id="mobileMenu">
-        <div class="inner">
-          <span id="close" onclick="hideMenu();">X</span>
-          <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/bio">Bio</a></li>
-            <li><a href="/contact">Contact</a></li>
-            <li><a href="/webdesign">Web Design</a></li>
-          </ul>
-        </div>
-      </div>
+      <?php include "includes/mobile-menu.php"; ?>
 
-      <div class="mobile-menu-icon"><a href="#" class="site-menu-toggle text-white"><span class="icon-menu h3" onclick="showMenu();"></span></a></div>
-
-      <?php include __DIR__ . '/../includes/navigation.php'; ?>
+      <!-- Include navigation -->
+      <?php include "includes/navigation.php"; ?>
 
     </header>
 
