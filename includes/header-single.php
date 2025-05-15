@@ -24,7 +24,8 @@ require_once __DIR__ . '/../functions.php';
 <body>
   <div class="site-wrap">
     <!-- Header Section -->
-    <header id="header" class="header-bar d-flex d-lg-block align-items-center" data-aos="fade-left">
+    <!-- <header id="header" class="header-bar d-flex d-lg-block align-items-center" data-aos="fade-left"> -->
+      <header id="header" class="header-bar d-flex d-lg-block align-items-center">
       <div id="site-logo" class="site-logo">
         <a href="/">
           <img loading="lazy" src="/images/profilesticker.png" width="150" height="auto" alt="James Welbes Profile Logo">
