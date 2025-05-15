@@ -12,27 +12,23 @@ require_once __DIR__ . '/../functions.php';
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <link rel="canonical" href="https://jameswelbes.com" />
-  <link rel="publisher" href="https://jameswelbes.com" />
-  <meta property="og:locale" content="en_US" />
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="James Welbes" />
-
-  <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700,900" rel="stylesheet">
-
+  <!-- Include header styles and scripts -->
+  <?php include __DIR__ . '/../header-meta.php'; ?>
   <?php include __DIR__ . '/../includes/header-styles.php'; ?>
-<?php include __DIR__ . '/../includes/header-scripts.php'; ?>
+  <?php include __DIR__ . '/../includes/header-scripts.php'; ?>
 
-
+<!-- Google Analytics (if applicable) -->
   <?php googleAnalytics(); ?>
 </head>
 
 <body>
   <div class="site-wrap">
-
-    <header id="header" class="header-bar d-flex d-lg-block align-items-center aos-init aos-animate" data-aos="fade-left">
+    <!-- Header Section -->
+    <header id="header" class="header-bar d-flex d-lg-block align-items-center" data-aos="fade-left">
       <div id="site-logo" class="site-logo">
-        <a href="home"><img loading="lazy" src="/images/profilesticker.png" width="150" alt="James Welbes Profile Logo"></a>
+        <a href="/">
+          <img loading="lazy" src="/images/profilesticker.png" width="150" height="auto" alt="James Welbes Profile Logo">
+        </a>
       </div>
 
       
@@ -43,12 +39,15 @@ require_once __DIR__ . '/../functions.php';
 
     </header>
 
+    <!-- Main Content -->
     <main class="main-content">
       <script>
         function showMenu() {
           document.getElementById('mobileMenu').classList.remove("hide");
         }
+
         function hideMenu() {
           document.getElementById('mobileMenu').classList.add("hide");
         }
       </script>
+
